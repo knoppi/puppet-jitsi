@@ -1,0 +1,31 @@
+---
+.gitlab-ci.yml:
+  override: true
+  custom:
+    custom_stages:
+      - syntax
+      - unit
+      - deploy
+    custom_jobs:
+      include:
+        - project: puppet/tools
+          file: gitlab-ci.yml
+          ref: master
+
+appveyor.yml:
+  delete: true
+.travis.yml:
+  delete: true
+.vscode/extensions.json:
+  delete: true
+
+spec/spec_helper.rb:
+  mock_with: ':mocha'
+  coverage_report: true
+  minimum_code_coverage_percentage: 100
+  hiera_config_ruby: "File.expand_path(File.join(__FILE__, '../fixtures/hiera.yaml'))"
+.rubocop.yml:
+  default_configs:
+    Style/RegexpLiteral:
+      Description: "Prefer simple style with slashes"
+      EnforcedStyle: slashes

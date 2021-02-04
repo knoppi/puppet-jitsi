@@ -1,0 +1,5 @@
+---
+jitsi::containerized_server::http_port: 30799
+jitsi::containerized_server::https_port: 30800
+jitsi::containerized_server::timezone: "Europe/Amsterdam"
+jitsi::containerized_server::public_url: "https://meet.example.com"
