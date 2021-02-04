@@ -5,8 +5,8 @@
 # @example
 #   include jitsi::containerized_server
 class jitsi::containerized_server (
-  String $http_port,
-  String $https_port,
+  Integer $http_port,
+  Integer $https_port,
   String $timezone,
   String $public_url,
   String $version = 'stable-5390-2',
