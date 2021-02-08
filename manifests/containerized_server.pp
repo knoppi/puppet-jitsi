@@ -9,6 +9,7 @@ class jitsi::containerized_server (
   Integer $https_port,
   String $timezone,
   String $public_url,
+  String $domain,
   String $version,
 ) {
   vcsrepo { '/srv/jitsi/':
