@@ -10,7 +10,7 @@ describe 'jitsi::containerized_server' do
       it do
         is_expected.to compile
         is_expected.to contain_vcsrepo('/srv/jitsi/')
-        is_expected.to contain_file('/src/jitsi/.env')
+        is_expected.to contain_file('/srv/jitsi/.env')
         # is_expected.to contain_docker_compose('jitsi')
       end
     end

@@ -9,9 +9,9 @@ class jitsi::containerized_server (
   Integer $https_port,
   String $timezone,
   String $public_url,
-  String $version = 'stable-5390-2',
+  String $version,
 ) {
-  vcsrepo { '/srv/jitsi':
+  vcsrepo { '/srv/jitsi/':
     ensure   => present,
     provider => git,
     source   => 'https://github.com/jitsi/docker-jitsi-meet',

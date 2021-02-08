@@ -3,4 +3,5 @@
 ---
 fixtures:
   forge_modules:
-     stdlib: "puppetlabs/vcsrepo"
+     remote_file: "lwf/remote_file"
+     vcsrepo: "puppetlabs/vcsrepo"
