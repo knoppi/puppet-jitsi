@@ -23,8 +23,11 @@ class jitsi::containerized_server (
   }
 
   file { [
+    '/srv/jitsi/.jitsi-meet-cfg/',
+    '/srv/jitsi/.jitsi-meet-cfg/web',
     '/srv/jitsi/.jitsi-meet-cfg/web/letsencrypt',
     '/srv/jitsi/.jitsi-meet-cfg/transcripts',
+    '/srv/jitsi/.jitsi-meet-cfg/prosody',
     '/srv/jitsi/.jitsi-meet-cfg/prosody/config',
     '/srv/jitsi/.jitsi-meet-cfg/prosody/prosody-plugins-custom',
     '/srv/jitsi/.jitsi-meet-cfg/jicofo',
