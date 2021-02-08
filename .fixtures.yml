@@ -5,3 +5,4 @@ fixtures:
   forge_modules:
      remote_file: "lwf/remote_file"
      vcsrepo: "puppetlabs/vcsrepo"
+     docker: "puppetlabs/docker"

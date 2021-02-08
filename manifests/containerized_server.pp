@@ -17,9 +17,33 @@ class jitsi::containerized_server (
     source   => 'https://github.com/jitsi/docker-jitsi-meet',
     revision => $version,
   }
-
-  file { '/srv/jitsi/.env':
+  -> file { '/srv/jitsi/.env':
     ensure  => present,
     content => template('jitsi/env.erb'),
+  }
+
+  file { [
+    '/srv/jitsi/.jitsi-meet-cfg/web/letsencrypt',
+    '/srv/jitsi/.jitsi-meet-cfg/transcripts',
+    '/srv/jitsi/.jitsi-meet-cfg/prosody/config',
+    '/srv/jitsi/.jitsi-meet-cfg/prosody/prosody-plugins-custom',
+    '/srv/jitsi/.jitsi-meet-cfg/jicofo',
+    '/srv/jitsi/.jitsi-meet-cfg/jvb',
+    '/srv/jitsi/.jitsi-meet-cfg/jigasi',
+    '/srv/jitsi/.jitsi-meet-cfg/jibri',
+    ] :
+      ensure => directory,
+  }
+
+  docker_compose { 'jitsi':
+    ensure        => present,
+    compose_files => [
+      '/srv/jitsi/docker-compose.yaml',
+      '/srv/jitsi/jibri.yaml',
+    ],
+    subscribe     => [
+      Vcsrepo['/srv/jitsi/'],
+      File['/srv/jitsi/.env'],
+    ]
   }
 }
