@@ -43,7 +43,7 @@ class jitsi::containerized_server (
     ensure        => present,
     compose_files => [
       '/srv/jitsi/docker-compose.yml',
-      '/srv/jitsi/jibri.yml',
+      #'/srv/jitsi/jibri.yml',
     ],
     subscribe     => [
       Vcsrepo['/srv/jitsi/'],
