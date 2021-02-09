@@ -11,7 +11,8 @@ describe 'jitsi::containerized_server' do
         is_expected.to compile
         is_expected.to contain_vcsrepo('/srv/jitsi/')
         is_expected.to contain_file('/srv/jitsi/.env')
-        is_expected.to contain_docker_compose('jitsi')
+        is_expected.to contain_exec('turn off jitsi')
+        is_expected.to contain_exec('turn on jitsi')
         [
           '/srv/jitsi/.jitsi-meet-cfg/',
           '/srv/jitsi/.jitsi-meet-cfg/web',

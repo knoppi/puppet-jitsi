@@ -44,12 +44,9 @@ class jitsi::containerized_server (
       ensure => directory,
   }
 
-  docker_compose { 'jitsi':
-    ensure        => present,
-    compose_files => [
-      '/srv/jitsi/docker-compose.yml',
-      #'/srv/jitsi/jibri.yml',
-    ],
+  exec { 'turn on jitsi':
+    cwd     => '/srv/jitsi',
+    command => '/usr/local/bin/docker-compose up -d',
     subscribe     => [
       Vcsrepo['/srv/jitsi/'],
       Exec['turn off jitsi'],
