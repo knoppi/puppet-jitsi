@@ -50,7 +50,7 @@ class jitsi::containerized_server (
     subscribe   => [
       Vcsrepo['/srv/jitsi/'],
       Exec['turn off jitsi'],
-    ]
+    ],
     refreshonly => true,
   }
 }
