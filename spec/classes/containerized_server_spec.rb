@@ -16,15 +16,12 @@ describe 'jitsi::containerized_server' do
         [
           '/srv/jitsi/.jitsi-meet-cfg/',
           '/srv/jitsi/.jitsi-meet-cfg/web',
-          '/srv/jitsi/.jitsi-meet-cfg/jibri',
           '/srv/jitsi/.jitsi-meet-cfg/jicofo',
-          '/srv/jitsi/.jitsi-meet-cfg/jigasi',
           '/srv/jitsi/.jitsi-meet-cfg/jvb',
           '/srv/jitsi/.jitsi-meet-cfg/prosody',
           '/srv/jitsi/.jitsi-meet-cfg/prosody/config',
           '/srv/jitsi/.jitsi-meet-cfg/prosody/prosody-plugins-custom',
           '/srv/jitsi/.jitsi-meet-cfg/transcripts',
-          '/srv/jitsi/.jitsi-meet-cfg/web/letsencrypt',
         ].each do |config_directory|
           is_expected.to contain_file(config_directory)
         end
