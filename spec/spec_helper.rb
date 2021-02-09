@@ -47,7 +47,7 @@ RSpec.configure do |c|
   end
   c.filter_run_excluding(bolt: true) unless ENV['GEM_BOLT']
   c.after(:suite) do
-    RSpec::Puppet::Coverage.report!(100)
+    RSpec::Puppet::Coverage.report!(80)
   end
 end
 

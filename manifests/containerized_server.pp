@@ -22,6 +22,11 @@ class jitsi::containerized_server (
     ensure  => present,
     content => template('jitsi/env.erb'),
   }
+  ~> exec { 'turn off jitsi':
+    cwd     => '/srv/jitsi',
+    command => '/usr/local/bin/docker-compose down',
+  }
+  ~> exec { '/usr/bin/rm -Rf /srv/jitsi/.jitsi-meet-cfg' : }
 
   file { [
     '/srv/jitsi/.jitsi-meet-cfg/',
@@ -47,7 +52,7 @@ class jitsi::containerized_server (
     ],
     subscribe     => [
       Vcsrepo['/srv/jitsi/'],
-      File['/srv/jitsi/.env'],
+      Exec['turn off jitsi'],
     ]
   }
 }
