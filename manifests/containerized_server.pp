@@ -45,11 +45,12 @@ class jitsi::containerized_server (
   }
 
   exec { 'turn on jitsi':
-    cwd       => '/srv/jitsi',
-    command   => '/usr/local/bin/docker-compose up -d',
-    subscribe => [
+    cwd         => '/srv/jitsi',
+    command     => '/usr/local/bin/docker-compose up -d',
+    subscribe   => [
       Vcsrepo['/srv/jitsi/'],
       Exec['turn off jitsi'],
     ]
+    refreshonly => true,
   }
 }
