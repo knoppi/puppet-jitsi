@@ -6,7 +6,7 @@ jitsi::containerized_server::public_url: "https://meet.example.com"
 jitsi::containerized_server::domain: "meet.example.com"
 jitsi::containerized_server::version: 'stable-5390-3'
 
-jitsi::client::version: 'v2.4.2'
+jitsi::client::version: 'v2.5.1'
 # echo hoIAhzSuC/pDQl6R+KHPs0aSMxRWXOEySEwHOpky4/NnTfomMrSJpjcQl+23S5Q5jtOmUsT/RJdtCAvOjGGR8g== | base64 -d | xxd -p
 jitsi::client::checksum: 8682008734ae0bfa43425e91f8a1cfb346923314565ce132484c073a9932e3f3674dfa2632b489a6371097edb74b94398ed3a652c4ff44976d080bce8c6191f2
 jitsi::client::checksum_type: 'sha512'
