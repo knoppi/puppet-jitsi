@@ -6,8 +6,8 @@ jitsi::containerized_server::public_url: "https://meet.example.com"
 jitsi::containerized_server::domain: "meet.example.com"
 jitsi::containerized_server::version: 'stable-5390-3'
 
-jitsi::client::version: 'v2.5.1'
+jitsi::client::version: 'v2.6.1'
 # look up on https://github.com/jitsi/jitsi-meet-electron/releases/v2.5.1/
-# echo hoIAhzSuC/pDQl6R+KHPs0aSMxRWXOEySEwHOpky4/NnTfomMrSJpjcQl+23S5Q5jtOmUsT/RJdtCAvOjGGR8g== | base64 -d | xxd -p
-jitsi::client::checksum: 92e517aa8d5cf0b4445b1aaf1ce2a815c7e4ccd005963928c58f17d3e7a384bb7fe12af9e0884f030754eb9f586ed9cfc102b4006c3abe51f15d259be3b8d6e7
+# echo "mb6sVHYoIK2Uq2tdckEHv5f4kz44Lj8V2He1hW1cS1625QMze6zDQm/YeZeue3juT5ol5bh5s/0y3mwzJxxzLw==" | base64 -d | xxd -p
+jitsi::client::checksum: 99beac54762820ad94ab6b5d724107bf97f8933e382e3f15d877b5856d5c4b5eb6e503337bacc3426fd87997ae7b78ee4f9a25e5b879b3fd32de6c33271c732f
 jitsi::client::checksum_type: 'sha512'
