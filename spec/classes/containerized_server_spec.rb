@@ -25,6 +25,8 @@ describe 'jitsi::containerized_server' do
         ].each do |config_directory|
           is_expected.to contain_file(config_directory)
         end
+        is_expected.to contain_exec('/usr/bin/rm -Rf /srv/jitsi/.jitsi-meet-cfg')
+        is_expected.to contain_file('/srv/jitsi/.jitsi-meet-cfg/web/config.js')
       end
     end
   end

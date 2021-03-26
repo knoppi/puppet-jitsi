@@ -53,4 +53,11 @@ class jitsi::containerized_server (
     ],
     refreshonly => true,
   }
+
+  file { '/srv/jitsi/.jitsi-meet-cfg/web/config.js':
+    ensure  => present,
+    content => template('jitsi/web_config.js.erb'),
+    backup  => '.puppet-bak',
+  }
+
 }
