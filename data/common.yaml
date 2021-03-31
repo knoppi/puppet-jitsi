@@ -5,6 +5,12 @@ jitsi::containerized_server::timezone: "Europe/Amsterdam"
 jitsi::containerized_server::public_url: "https://meet.example.com"
 jitsi::containerized_server::domain: "meet.example.com"
 jitsi::containerized_server::version: 'stable-5390-3'
+jitsi::containerized_server::version: 'stable-5390-3'
+jitsi::containerized_server::disable_all_audio_processing: false
+jitsi::containerized_server::disable_echo_cancellation: false
+jitsi::containerized_server::disable_noise_supression: false
+jitsi::containerized_server::disable_auto_gain_control: true
+jitsi::containerized_server::disable_high_pass_filter: true
 
 jitsi::client::version: 'v2.7.0'
 # look up on https://github.com/jitsi/jitsi-meet-electron/releases/v2.7.0/

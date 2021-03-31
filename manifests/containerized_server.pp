@@ -11,6 +11,11 @@ class jitsi::containerized_server (
   String $public_url,
   String $domain,
   String $version,
+  Boolean $disable_all_audio_processing,
+  Boolean $disable_echo_cancellation,
+  Boolean $disable_noise_supression,
+  Boolean $disable_auto_gain_control,
+  Boolean $disable_high_pass_filter,
 ) {
   vcsrepo { '/srv/jitsi/':
     ensure   => present,
