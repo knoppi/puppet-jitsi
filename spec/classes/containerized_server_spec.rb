@@ -27,6 +27,23 @@ describe 'jitsi::containerized_server' do
         end
         is_expected.to contain_exec('/usr/bin/rm -Rf /srv/jitsi/.jitsi-meet-cfg')
         is_expected.to contain_file('/srv/jitsi/.jitsi-meet-cfg/web/config.js')
+
+        # check the content of the config file
+        content = catalogue.resource(
+          'file',
+          '/srv/jitsi/.jitsi-meet-cfg/web/config.js',
+        ).send(:parameters)[:content]
+        expect(content).to match 'config.disableAP = false;'
+        expect(content).to match 'config.disableAEC = false;'
+        expect(content).to match 'config.disableNS = false;'
+        expect(content).to match 'config.disableAGC = true;'
+        expect(content).to match 'config.disableHPF = true;'
+
+        # uncomment this for storing the generated catalogue
+        # File.write(
+        #   'containerized_server.json',
+        #   PSON.pretty_generate(catalogue),
+        # )
       end
     end
   end

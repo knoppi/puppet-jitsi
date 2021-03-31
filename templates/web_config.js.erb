@@ -737,11 +737,16 @@ config.desktopSharingFrameRate = { min: 5, max: 5 };
 
 config.enableNoAudioDetection = false;
 config.enableTalkWhileMuted = false;
-config.disableAP = false;
-config.disableAEC = true;
-config.disableNS = true;
-config.disableAGC = true;
-config.disableHPF = true;
+// All audio processing
+config.disableAP = <%= @disable_all_audio_processing %>;
+// Auto echo cancellation
+config.disableAEC = <%= @disable_echo_cancellation %>;
+// Noise suppression
+config.disableNS = <%= @disable_noise_supression %>;
+// Auto Gain Control
+config.disableAGC = <%= @disable_auto_gain_control %>;
+// High Pass Filter
+config.disableHPF = <%= @disable_high_pass_filter %>;
 config.stereo = false;
 config.startAudioOnly = false;
 config.startAudioMuted = 10;
