@@ -12,6 +12,10 @@
           file: gitlab-ci.yml
           ref: master
 
+.devcontainer/devcontainer.json:
+  delete: true
+.devcontainer/Dockerfile:
+  delete: true
 appveyor.yml:
   delete: true
 .travis.yml:
