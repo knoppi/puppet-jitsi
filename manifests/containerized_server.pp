@@ -11,6 +11,7 @@ class jitsi::containerized_server (
   String $public_url,
   String $domain,
   String $version,
+  String $jibri_domain,
   Boolean $disable_all_audio_processing,
   Boolean $disable_echo_cancellation,
   Boolean $disable_noise_supression,
