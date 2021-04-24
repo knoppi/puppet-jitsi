@@ -17,6 +17,12 @@ class jitsi::containerized_server (
   Boolean $disable_noise_supression,
   Boolean $disable_auto_gain_control,
   Boolean $disable_high_pass_filter,
+  String $jicofo_component_secret,
+  String $jicofo_auth_password,
+  String $jvb_auth_password,
+  String $jigasi_xmpp_password,
+  String $jibri_recorder_password,
+  String $jibri_xmpp_password,
 ) {
   vcsrepo { '/srv/jitsi/':
     ensure   => present,

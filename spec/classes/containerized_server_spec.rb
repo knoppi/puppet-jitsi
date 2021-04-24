@@ -39,6 +39,18 @@ describe 'jitsi::containerized_server' do
         expect(content).to match 'config.disableAGC = true;'
         expect(content).to match 'config.disableHPF = true;'
 
+        # check the content of the env file
+        content_env = catalogue.resource(
+          'file',
+          '/srv/jitsi/.env',
+        ).send(:parameters)[:content]
+        expect(content_env).to match 'JICOFO_COMPONENT_SECRET=JICOFO_COMPONENT_SECRET'
+        expect(content_env).to match 'JICOFO_AUTH_PASSWORD=JICOFO_AUTH_PASSWORD'
+        expect(content_env).to match 'JVB_AUTH_PASSWORD=JVB_AUTH_PASSWORD'
+        expect(content_env).to match 'JIGASI_XMPP_PASSWORD=JIGASI_XMPP_PASSWORD'
+        expect(content_env).to match 'JIBRI_RECORDER_PASSWORD=JIBRI_RECORDER_PASSWORD'
+        expect(content_env).to match 'JIBRI_XMPP_PASSWORD=JIBRI_XMPP_PASSWORD'
+
         # uncomment this for storing the generated catalogue
         # File.write(
         #   'containerized_server.json',

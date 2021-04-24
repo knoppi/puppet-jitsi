@@ -1,0 +1,7 @@
+---
+jitsi::containerized_server::jicofo_component_secret: JICOFO_COMPONENT_SECRET
+jitsi::containerized_server::jicofo_auth_password: JICOFO_AUTH_PASSWORD
+jitsi::containerized_server::jvb_auth_password: JVB_AUTH_PASSWORD
+jitsi::containerized_server::jigasi_xmpp_password: JIGASI_XMPP_PASSWORD
+jitsi::containerized_server::jibri_recorder_password: JIBRI_RECORDER_PASSWORD
+jitsi::containerized_server::jibri_xmpp_password: JIBRI_XMPP_PASSWORD
