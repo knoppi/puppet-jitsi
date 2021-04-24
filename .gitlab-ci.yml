@@ -4,8 +4,7 @@ stages:
   - unit
   - deploy
 
-
-before_script:
+before_script: &before_script
   - bundle -v
   - rm Gemfile.lock || true
   - "# Update system gems if requested. This is useful to temporarily workaround troubles in the test runner"
@@ -14,7 +13,7 @@ before_script:
   - '[ -z "$RUBYGEMS_VERSION" ] || (yes || true) | gem update --system $RUBYGEMS_VERSION'
   - gem --version
   - bundle -v
-  - bundle install 
+  - bundle install
 
 include:
 - project: puppet/tools
