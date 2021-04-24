@@ -1,8 +1,8 @@
 {
   "name": "knoppi-jitsi",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "knoppi",
-  "summary": "",
+  "summary": "Module for installing Jitsi Server (via docker-compose) and Client (as AppImage)",
   "license": "Apache-2.0",
   "source": "",
   "dependencies": [
@@ -17,6 +17,12 @@
     {
       "name": "puppetlabs/docker",
       "version": ">= 3.13.1 < 4.0"
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 5.5.0 < 7.0.0"
     }
   ],
   "operatingsystem_support": [
