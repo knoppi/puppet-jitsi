@@ -8,7 +8,7 @@
 # @example
 #   include jitsi::containerized_server
 #
-# @param (required) jicofo_component_secret
+# @param jicofo_component_secret
 #   (required) XMPP component password for Jicofo;
 #   set it to random string as output by `openssl rand -hex 16`
 # @param jicofo_auth_password
