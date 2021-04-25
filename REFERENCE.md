@@ -7,7 +7,7 @@
 ### Classes
 
 * [`jitsi::client`](#jitsiclient): Install the Jitsi client
-* [`jitsi::containerized_server`](#jitsicontainerized_server): A short summary of the purpose of this class
+* [`jitsi::containerized_server`](#jitsicontainerized_server): Install Jitsi as a containerized service
 
 ## Classes
 
@@ -65,7 +65,10 @@ the AppImage. By default this is sha512.
 
 ### <a name="jitsicontainerized_server"></a>`jitsi::containerized_server`
 
-A description of what this class does
+This class downloads definitions from https://github.com/jitsi/docker-jitsi-meet
+and performs basic settings to produce a simple working setup of jitsi.
+The code in the repository uses docker-compose to start the services as
+containers.
 
 #### Examples
 
@@ -79,6 +82,12 @@ include jitsi::containerized_server
 
 The following parameters are available in the `jitsi::containerized_server` class:
 
+* [`jicofo_component_secret`](#jicofo_component_secret)
+* [`jicofo_auth_password`](#jicofo_auth_password)
+* [`jvb_auth_password`](#jvb_auth_password)
+* [`jigasi_xmpp_password`](#jigasi_xmpp_password)
+* [`jibri_recorder_password`](#jibri_recorder_password)
+* [`jibri_xmpp_password`](#jibri_xmpp_password)
 * [`http_port`](#http_port)
 * [`https_port`](#https_port)
 * [`timezone`](#timezone)
@@ -91,118 +100,124 @@ The following parameters are available in the `jitsi::containerized_server` clas
 * [`disable_noise_supression`](#disable_noise_supression)
 * [`disable_auto_gain_control`](#disable_auto_gain_control)
 * [`disable_high_pass_filter`](#disable_high_pass_filter)
-* [`jicofo_component_secret`](#jicofo_component_secret)
-* [`jicofo_auth_password`](#jicofo_auth_password)
-* [`jvb_auth_password`](#jvb_auth_password)
-* [`jigasi_xmpp_password`](#jigasi_xmpp_password)
-* [`jibri_recorder_password`](#jibri_recorder_password)
-* [`jibri_xmpp_password`](#jibri_xmpp_password)
-
-##### <a name="http_port"></a>`http_port`
-
-Data type: `Integer`
-
-
-
-##### <a name="https_port"></a>`https_port`
-
-Data type: `Integer`
-
-
-
-##### <a name="timezone"></a>`timezone`
-
-Data type: `String`
-
-
-
-##### <a name="public_url"></a>`public_url`
-
-Data type: `String`
-
-
-
-##### <a name="domain"></a>`domain`
-
-Data type: `String`
-
-
-
-##### <a name="version"></a>`version`
-
-Data type: `String`
-
-
-
-##### <a name="jibri_domain"></a>`jibri_domain`
-
-Data type: `String`
-
-
-
-##### <a name="disable_all_audio_processing"></a>`disable_all_audio_processing`
-
-Data type: `Boolean`
-
-
-
-##### <a name="disable_echo_cancellation"></a>`disable_echo_cancellation`
-
-Data type: `Boolean`
-
-
-
-##### <a name="disable_noise_supression"></a>`disable_noise_supression`
-
-Data type: `Boolean`
-
-
-
-##### <a name="disable_auto_gain_control"></a>`disable_auto_gain_control`
-
-Data type: `Boolean`
-
-
-
-##### <a name="disable_high_pass_filter"></a>`disable_high_pass_filter`
-
-Data type: `Boolean`
-
-
 
 ##### <a name="jicofo_component_secret"></a>`jicofo_component_secret`
 
 Data type: `String`
 
-
+(required) XMPP component password for Jicofo;
+set it to random string as output by `openssl rand -hex 16`
 
 ##### <a name="jicofo_auth_password"></a>`jicofo_auth_password`
 
 Data type: `String`
 
-
+(required) XMPP password for Jicofo client connections;
+set it to random string as output by `openssl rand -hex 16`
 
 ##### <a name="jvb_auth_password"></a>`jvb_auth_password`
 
 Data type: `String`
 
-
+(required) XMPP password for JVB client connections;
+set it to random string as output by `openssl rand -hex 16`
 
 ##### <a name="jigasi_xmpp_password"></a>`jigasi_xmpp_password`
 
 Data type: `String`
 
-
+(required) XMPP password for Jigasi MUC client connections;
+set it to random string as output by `openssl rand -hex 16`
 
 ##### <a name="jibri_recorder_password"></a>`jibri_recorder_password`
 
 Data type: `String`
 
-
+(required) XMPP recorder password for Jibri client connections;
+set it to random string as output by `openssl rand -hex 16`
 
 ##### <a name="jibri_xmpp_password"></a>`jibri_xmpp_password`
 
 Data type: `String`
 
+(required) XMPP password for Jibri client connections;
+set it to random string as output by `openssl rand -hex 16`
 
+##### <a name="http_port"></a>`http_port`
+
+Data type: `Integer`
+
+Set the port on which you can reach the web frontend via HTTP.
+Defaults to 30799.
+This is required in particular if you run Jitsi behin a reverse proxy.
+
+##### <a name="https_port"></a>`https_port`
+
+Data type: `Integer`
+
+Set the port on which you can reach the web frontend via HTTPS.
+Defaults to 30800.
+
+##### <a name="timezone"></a>`timezone`
+
+Data type: `String`
+
+Set the timezone, your jitsi instance is running in.
+Defaults to Europe/Amsterdam.
+
+##### <a name="public_url"></a>`public_url`
+
+Data type: `String`
+
+Set the URL where your users can reach the web frontend.
+
+##### <a name="domain"></a>`domain`
+
+Data type: `String`
+
+FQDN of your jitsi instance.
+
+##### <a name="version"></a>`version`
+
+Data type: `String`
+
+version of the container images used
+
+##### <a name="jibri_domain"></a>`jibri_domain`
+
+Data type: `String`
+
+If using jibri for recording or streaming, it enters the meeting as an additional
+user. If it has the domain given in this parameter it will actually be hidden.
+
+##### <a name="disable_all_audio_processing"></a>`disable_all_audio_processing`
+
+Data type: `Boolean`
+
+Set to True if you want to disable all audio processing.
+Overrides all of the subsequent parameters.
+
+##### <a name="disable_echo_cancellation"></a>`disable_echo_cancellation`
+
+Data type: `Boolean`
+
+Set to True if you want to disable echo cancellation.
+
+##### <a name="disable_noise_supression"></a>`disable_noise_supression`
+
+Data type: `Boolean`
+
+Set to True if you want to disable noise suppression.
+
+##### <a name="disable_auto_gain_control"></a>`disable_auto_gain_control`
+
+Data type: `Boolean`
+
+Set to True if you want to disable auto gain control.
+
+##### <a name="disable_high_pass_filter"></a>`disable_high_pass_filter`
+
+Data type: `Boolean`
+
+Set to True if you want to disable high pass filtering.
 
