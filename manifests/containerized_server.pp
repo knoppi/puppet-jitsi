@@ -1,9 +1,61 @@
-# @summary A short summary of the purpose of this class
+# @summary Install Jitsi as a containerized service
 #
-# A description of what this class does
+# This class downloads definitions from https://github.com/jitsi/docker-jitsi-meet
+# and performs basic settings to produce a simple working setup of jitsi.
+# The code in the repository uses docker-compose to start the services as
+# containers.
 #
 # @example
 #   include jitsi::containerized_server
+#
+# @param jicofo_component_secret
+#   (required) XMPP component password for Jicofo;
+#   set it to random string as output by `openssl rand -hex 16`
+# @param jicofo_auth_password
+#   (required) XMPP password for Jicofo client connections;
+#   set it to random string as output by `openssl rand -hex 16`
+# @param jvb_auth_password
+#   (required) XMPP password for JVB client connections;
+#   set it to random string as output by `openssl rand -hex 16`
+# @param jigasi_xmpp_password
+#   (required) XMPP password for Jigasi MUC client connections;
+#   set it to random string as output by `openssl rand -hex 16`
+# @param jibri_recorder_password
+#   (required) XMPP recorder password for Jibri client connections;
+#   set it to random string as output by `openssl rand -hex 16`
+# @param jibri_xmpp_password
+#   (required) XMPP password for Jibri client connections;
+#   set it to random string as output by `openssl rand -hex 16`
+# @param http_port
+#   Set the port on which you can reach the web frontend via HTTP.
+#   Defaults to 30799.
+#   This is required in particular if you run Jitsi behin a reverse proxy.
+# @param https_port
+#   Set the port on which you can reach the web frontend via HTTPS.
+#   Defaults to 30800.
+# @param timezone
+#   Set the timezone, your jitsi instance is running in.
+#   Defaults to Europe/Amsterdam.
+# @param public_url
+#   Set the URL where your users can reach the web frontend.
+# @param domain
+#   FQDN of your jitsi instance.
+# @param version
+#   version of the container images used
+# @param jibri_domain
+#   If using jibri for recording or streaming, it enters the meeting as an additional
+#   user. If it has the domain given in this parameter it will actually be hidden.
+# @param disable_all_audio_processing
+#   Set to True if you want to disable all audio processing.
+#   Overrides all of the subsequent parameters.
+# @param disable_echo_cancellation
+#   Set to True if you want to disable echo cancellation.
+# @param disable_noise_supression
+#   Set to True if you want to disable noise suppression.
+# @param disable_auto_gain_control
+#   Set to True if you want to disable auto gain control.
+# @param disable_high_pass_filter
+#   Set to True if you want to disable high pass filtering.
 class jitsi::containerized_server (
   Integer $http_port,
   Integer $https_port,
