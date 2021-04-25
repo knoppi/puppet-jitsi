@@ -10,7 +10,18 @@ By default it expects you to install a reverse proxy which exposes jitsi to the 
 
 On the client it downloads a stable version of the AppImage from GitHub and saves it on `/usr/local/bin`.
 
+Client and server classes are completely unrelated but, of course, deal with connected subjects.
+
 ## Usage
+
+### Client
+
+The class for the client does not need any further parameters but can work with the defaults.
+Just assign it to your node and it will download the AppImage from the GitHub Releases.
+You can also specify the version you want to download.
+In that case make sure you also specify the corresponding checksum and checksum type.
+
+### Server
 
 On the server side we set several values:
 
