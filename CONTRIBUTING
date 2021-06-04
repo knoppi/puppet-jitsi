@@ -1,0 +1,21 @@
+Upgrading jitsi version
+=======================
+
+Upgrading containerized server
+------------------------------
+
+* clone repository and checkout corresponding tag. Compare env.example to file in templates folder.
+* update version number in `data/common.yaml`:
+  ```
+  jitsi::containerized_server::version: 'stable-5870'
+  ```
+* on a target host deploy instance
+* check for backup of web config, compare to your version in templates
+
+Upgrade AppImage client
+-----------------------
+
+* update version in `data/common.yaml`
+* determine hash for AppImage:
+    * retrieve from github releases latest-linux.yaml
+    * read hassum end decode it using `| base64 -d | xxd -p`
