@@ -52,10 +52,10 @@ describe 'jitsi::containerized_server' do
         expect(content_env).to match 'JIBRI_XMPP_PASSWORD=JIBRI_XMPP_PASSWORD'
 
         # uncomment this for storing the generated catalogue
-        # File.write(
-        #   'containerized_server.json',
-        #   PSON.pretty_generate(catalogue),
-        # )
+        File.write(
+          'containerized_server.json',
+          PSON.pretty_generate(catalogue),
+        )
       end
     end
   end
