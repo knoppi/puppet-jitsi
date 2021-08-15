@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.3.1
+
+Version bump: server to release 5963, client to 2.8.10
+
 ## 1.3.0
 
 * version bump:
