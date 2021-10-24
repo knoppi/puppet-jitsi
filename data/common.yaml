@@ -5,16 +5,15 @@ jitsi::containerized_server::timezone: "Europe/Amsterdam"
 jitsi::containerized_server::public_url: "https://meet.example.com"
 jitsi::containerized_server::jibri_domain: "https://jibri.meet.example.com"
 jitsi::containerized_server::domain: "meet.example.com"
-#jitsi::containerized_server::version: 'stable-5963'
-jitsi::containerized_server::version: 'stable-6173'
+jitsi::containerized_server::version: 'stable-6433'
 jitsi::containerized_server::disable_all_audio_processing: false
 jitsi::containerized_server::disable_echo_cancellation: false
 jitsi::containerized_server::disable_noise_supression: false
 jitsi::containerized_server::disable_auto_gain_control: true
 jitsi::containerized_server::disable_high_pass_filter: true
 
-jitsi::client::version: 'v2.8.11'
-# look up in https://github.com/jitsi/jitsi-meet-electron/releases/download/v2.8.11/latest-linux.yml
-# echo "e0dswAaKcgo84hR24vByMSv/waGv7z8yRj1SoyFxhAqSHNlWEBtW/JTHImCLE4sQeBhtw7laqppwNQjh89e2ew==" | base64 -d | xxd -p
-jitsi::client::checksum: 7b476cc0068a720a3ce21476e2f072312bffc1a1afef3f32463d52a32171840a921cd956101b56fc94c722608b138b1078186dc3b95aaa9a703508e1f3d7b67b
+jitsi::client::version: 'v2.9.0'
+# look up in https://github.com/jitsi/jitsi-meet-electron/releases/download/v2.9.0/latest-linux.yml
+# echo "lnJZB37ZrhCdNFQywBlfLr0KcNDywwJlIz3JU6s0BLOgepCXuKoyk+8+oGXfTUcU1qfXmCmAhtx5eLl3XjHLug==" | base64 -d | xxd -p
+jitsi::client::checksum: 967259077ed9ae109d345432c0195f2ebd0a70d0f2c30265233dc953ab3404b3a07a9097b8aa3293ef3ea065df4d4714d6a7d798298086dc7978b9775e31cbba
 jitsi::client::checksum_type: 'sha512'

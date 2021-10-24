@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.3.4
+
+Version bump: server to release stable-6433, client to 2.9.0
+
 ## 1.3.3
 
 Version bump: client to 2.8.11
