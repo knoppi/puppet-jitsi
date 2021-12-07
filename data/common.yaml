@@ -12,8 +12,8 @@ jitsi::containerized_server::disable_noise_supression: false
 jitsi::containerized_server::disable_auto_gain_control: true
 jitsi::containerized_server::disable_high_pass_filter: true
 
-jitsi::client::version: 'v2021.12.1'
-# look up in https://github.com/jitsi/jitsi-meet-electron/releases/download/v2021.12.1/latest-linux.yml
-# echo "RrhlbXKMb/KY8HX6iMAsVJhZNJEy+Y3jdzBjLoa6WFUlwHwUOXuQ9rKSuHFxZ0mqiFc5p0b1Aw4IH5+YuaLXHw==" | base64 -d | xxd -p
-jitsi::client::checksum: 46b8656d728c6ff298f075fa88c02c549859349132f98de37730632e86ba585525c07c14397b90f6b292b871716749aa885739a746f5030e081f9f98b9a2d71f
+jitsi::client::version: 'v2021.12.2'
+# look up in https://github.com/jitsi/jitsi-meet-electron/releases/download/v2021.12.2/latest-linux.yml
+# echo "q7iQzM1wFe5DDaUJvyP+dlHKxhp0gWSbUcLugrf4xYA2FJ82VOqs/sc/tUylXkTjP60YrEQZ64QbmY2SYbvyCQ==" | base64 -d | xxd -p
+jitsi::client::checksum: abb890cccd7015ee430da509bf23fe7651cac61a7481649b51c2ee82b7f8c58036149f3654eaacfec73fb54ca55e44e33fad18ac4419eb841b998d9261bbf209
 jitsi::client::checksum_type: 'sha512'
