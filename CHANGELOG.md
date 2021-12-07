@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.3.6
+
+Version bump: client to 2021.12.2
+
 ## 1.3.5
 
 Version bump: client to 2021.12.1 (apparently they changed versioning scheme)
