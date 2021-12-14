@@ -69,6 +69,7 @@ class jitsi::containerized_server (
   Boolean $disable_noise_supression,
   Boolean $disable_auto_gain_control,
   Boolean $disable_high_pass_filter,
+  Boolean $enable_breakout_rooms,
   String $jicofo_component_secret,
   String $jicofo_auth_password,
   String $jvb_auth_password,

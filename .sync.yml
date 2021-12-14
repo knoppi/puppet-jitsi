@@ -16,6 +16,8 @@
   delete: true
 .devcontainer/Dockerfile:
   delete: true
+.devcontainer/README.md:
+  delete: true
 appveyor.yml:
   delete: true
 .travis.yml:

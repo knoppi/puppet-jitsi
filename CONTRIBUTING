@@ -4,7 +4,7 @@ Upgrading jitsi version
 Upgrading containerized server
 ------------------------------
 
-* clone repository and checkout corresponding tag. Compare env.example to file in templates folder.
+* clone repository https://github.com/jitsi/docker-jitsi-meet.git and checkout corresponding tag. Compare env.example to file in templates folder.
 * update version number in `data/common.yaml`:
   ```
   jitsi::containerized_server::version: 'stable-5870'
