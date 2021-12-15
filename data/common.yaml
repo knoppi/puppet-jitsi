@@ -12,6 +12,9 @@ jitsi::containerized_server::disable_noise_supression: false
 jitsi::containerized_server::disable_auto_gain_control: true
 jitsi::containerized_server::disable_high_pass_filter: true
 jitsi::containerized_server::enable_breakout_rooms: true
+jitsi::containerized_server::jwt_app_id: ""
+jitsi::containerized_server::jwt_app_secret: ""
+jitsi::containerized_server::allow_guests: 0
 
 jitsi::client::version: 'v2021.12.2'
 # look up in https://github.com/jitsi/jitsi-meet-electron/releases/download/v2021.12.2/latest-linux.yml
