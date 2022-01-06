@@ -64,6 +64,16 @@
 #   Secret for use with JWT authentication
 # @param allow_guests
 #   If guests access is allowed
+# @param disable_third_party_requests
+#   when set to true, no third parties like gravatar will be called (default)
+# @param noisy_mic_detection
+#   set to false if you want to disable the detection of noisy mics
+# @param video_resolution
+#   set the preferred video resolution
+# @param start_muted
+#   use this to define if a user shall start muted (true) or with audio enabled (false)
+# @param start_without_video
+#   use this to define if a user shall start without video activatedf (true)
 class jitsi::containerized_server (
   Integer $http_port,
   Integer $https_port,
@@ -86,7 +96,12 @@ class jitsi::containerized_server (
   String $jibri_xmpp_password,
   String $jwt_app_id,
   String $jwt_app_secret,
-  Integer $allow_guests
+  Integer $allow_guests,
+  Boolean $disable_third_party_requests,
+  Boolean $noisy_mic_detection,
+  Integer $video_resolution,
+  Boolean $start_muted,
+  Boolean $start_without_video,
 ) {
   if ($jwt_app_id != '' and $jwt_app_secret != '')
   {

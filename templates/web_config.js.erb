@@ -128,7 +128,7 @@ var config = {
     // notify the user if there is noise, other than voice, coming from the current
     // selected microphone. The purpose it to let the user know that the input could
     // be potentially unpleasant for other meeting participants.
-    enableNoisyMicDetection: true,
+    enableNoisyMicDetection: <%= @noisy_mic_detection %>,
 
     // Start the conference in audio only mode (no video is being received nor
     // sent).
@@ -139,7 +139,7 @@ var config = {
 
     // Start calls with audio muted. Unlike the option above, this one is only
     // applied locally. FIXME: having these 2 options is confusing.
-    // startWithAudioMuted: false,
+    startWithAudioMuted: <%= @start_muted %>,
 
     // Enabling it (with #params) will disable local audio output of remote
     // participants and to enable it back a reload is needed.
@@ -158,7 +158,7 @@ var config = {
     // Video
 
     // Sets the preferred resolution (height) for local video. Defaults to 720.
-    // resolution: 720,
+    resolution: <%= @video_resolution %>,
 
     // Specifies whether the raised hand will hide when someone becomes a dominant speaker or not
     // disableRemoveRaisedHandOnFocus: false,
@@ -182,31 +182,31 @@ var config = {
     // util#browser#usesNewGumFlow. The constraints are independent from
     // this config's resolution value. Defaults to requesting an ideal
     // resolution of 720p.
-    // constraints: {
-    //     video: {
-    //         height: {
-    //             ideal: 720,
-    //             max: 720,
-    //             min: 240
-    //         }
-    //     }
-    // },
+    constraints: {
+        video: {
+            height: {
+                ideal: <%= @video_resolution %>,
+                max: 1080,
+                min: 240
+            }
+        }
+    },
 
     // Enable / disable simulcast support.
-    // disableSimulcast: false,
+    disableSimulcast: false,
 
     // Enable / disable layer suspension.  If enabled, endpoints whose HD layers are not in use will be suspended
     // (no longer sent) until they are requested again. This is enabled by default. This must be enabled for screen
     // sharing to work as expected on Chrome. Disabling this might result in low resolution screenshare being sent
     // by the client.
-    // enableLayerSuspension: false,
+    enableLayerSuspension: true,
 
     // Every participant after the Nth will start video muted.
     // startVideoMuted: 10,
 
     // Start calls with video muted. Unlike the option above, this one is only
     // applied locally. FIXME: having these 2 options is confusing.
-    // startWithVideoMuted: false,
+    startWithVideoMuted: <%= @start_without_video %>,
 
     // If set to true, prefer to use the H.264 video codec (if supported).
     // Note that it's not recommended to do this because simulcast is not
@@ -278,7 +278,7 @@ var config = {
     // Misc
 
     // Default value for the channel "last N" attribute. -1 for unlimited.
-    channelLastN: 4,
+    channelLastN: 2,
 
     // Connection indicators
     // connectionIndicators: {
@@ -696,7 +696,7 @@ var config = {
     // If third party requests are disabled, no other server will be contacted.
     // This means avatars will be locally generated and callstats integration
     // will not function.
-    // disableThirdPartyRequests: false,
+    disableThirdPartyRequests: <%= @disableThirdPartyRequests %>,
 
 
     // Peer-To-Peer mode: used (if enabled) when there are just 2 participants.
@@ -1219,12 +1219,12 @@ config.bosh = '/http-bind';
 if (!config.hasOwnProperty('constraints')) config.constraints = {};
 if (!config.constraints.hasOwnProperty('video')) config.constraints.video = {};
 
-config.resolution = 720;
-config.constraints.video.height = { ideal: 720, max: 720, min: 180 };
+config.resolution = <%= @video_resolution %>;
+config.constraints.video.height = { ideal: <%= @video_resolution %>, max: 1080, min: 180 };
 config.constraints.video.width = { ideal: 1280, max: 1280, min: 320};
 config.disableSimulcast = false;
 config.startVideoMuted = 10;
-config.startWithVideoMuted = false;
+config.startWithVideoMuted = <%= @start_without_video %>;
 
 // ScreenShare Configuration.
 //
@@ -1248,7 +1248,7 @@ config.disableHPF = <%= @disable_high_pass_filter %>;
 config.stereo = false;
 config.startAudioOnly = false;
 config.startAudioMuted = 10;
-config.startWithAudioMuted = false;
+config.startWithAudioMuted = <%= @start_muted %>;
 config.startSilent = false;
 config.disableAudioLevels = true;
 config.enableNoisyMicDetection = false;
@@ -1307,7 +1307,7 @@ config.enableCalendarIntegration = false;
 //
 
 // Prejoin page.
-config.prejoinPageEnabled = true;
+config.prejoinPageEnabled = false;
 
 // Welcome page.
 config.enableWelcomePage = true;
