@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.4.0
+
+* Version bump: client to 2022.1.1
+* add configuration options reguarding audio and video quality
+
 ## 1.3.7
 
 Version bump: server to 6726-1

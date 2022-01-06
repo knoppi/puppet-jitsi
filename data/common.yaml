@@ -12,9 +12,17 @@ jitsi::containerized_server::disable_noise_supression: false
 jitsi::containerized_server::disable_auto_gain_control: true
 jitsi::containerized_server::disable_high_pass_filter: true
 jitsi::containerized_server::enable_breakout_rooms: true
+jitsi::containerized_server::jwt_app_id: ""
+jitsi::containerized_server::jwt_app_secret: ""
+jitsi::containerized_server::allow_guests: 0
+jitsi::containerized_server::disable_third_party_requests: true
+jitsi::containerized_server::noisy_mic_detection: true
+jitsi::containerized_server::video_resolution: 720
+jitsi::containerized_server::start_muted: false
+jitsi::containerized_server::start_without_video: false
 
-jitsi::client::version: 'v2021.12.2'
-# look up in https://github.com/jitsi/jitsi-meet-electron/releases/download/v2021.12.2/latest-linux.yml
-# echo "q7iQzM1wFe5DDaUJvyP+dlHKxhp0gWSbUcLugrf4xYA2FJ82VOqs/sc/tUylXkTjP60YrEQZ64QbmY2SYbvyCQ==" | base64 -d | xxd -p
-jitsi::client::checksum: abb890cccd7015ee430da509bf23fe7651cac61a7481649b51c2ee82b7f8c58036149f3654eaacfec73fb54ca55e44e33fad18ac4419eb841b998d9261bbf209
+jitsi::client::version: 'v2022.1.1'
+# look up in https://github.com/jitsi/jitsi-meet-electron/releases/download/v2022.1.1/latest-linux.yml
+# echo "Mu+j9JaOPwQ3izZh4rB5Bh6Wf6PtzMEh973YxVyPoXdz1nfhPA6GcGII4LxSMNt3+RFV1DFdzwUvhhHY1+TRhQ==" | base64 -d | xxd -p
+jitsi::client::checksum: 32efa3f4968e3f04378b3661e2b079061e967fa3edccc121f7bdd8c55c8fa17773d677e13c0e86706208e0bc5230db77f91155d4315dcf052f8611d8d7e4d185
 jitsi::client::checksum_type: 'sha512'
