@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.4.1
+
+* bugfix version (wrong variable spelling)
+
 ## 1.4.0
 
 * Version bump: client to 2022.1.1
