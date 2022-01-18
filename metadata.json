@@ -1,6 +1,6 @@
 {
   "name": "knoppi-jitsi",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "author": "knoppi",
   "summary": "Module for installing Jitsi Server (via docker-compose) and Client (as AppImage)",
   "license": "Apache-2.0",
