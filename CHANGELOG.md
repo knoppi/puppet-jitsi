@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.5.0
+
+Version bump: server to 6826
+
 ## 1.4.1
 
 * bugfix version (wrong variable spelling)
