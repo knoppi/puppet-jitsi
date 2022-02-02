@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.6.1
+
+extend REFERENCE for new parameters
+
 ## 1.6.0
 
 add new configuration options for jitsi server and change some defaults for a better experience

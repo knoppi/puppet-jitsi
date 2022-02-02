@@ -95,11 +95,24 @@ The following parameters are available in the `jitsi::containerized_server` clas
 * [`domain`](#domain)
 * [`version`](#version)
 * [`jibri_domain`](#jibri_domain)
+* [`enable_breakout_rooms`](#enable_breakout_rooms)
 * [`disable_all_audio_processing`](#disable_all_audio_processing)
 * [`disable_echo_cancellation`](#disable_echo_cancellation)
 * [`disable_noise_supression`](#disable_noise_supression)
 * [`disable_auto_gain_control`](#disable_auto_gain_control)
 * [`disable_high_pass_filter`](#disable_high_pass_filter)
+* [`jwt_app_id`](#jwt_app_id)
+* [`jwt_app_secret`](#jwt_app_secret)
+* [`allow_guests`](#allow_guests)
+* [`disable_third_party_requests`](#disable_third_party_requests)
+* [`noisy_mic_detection`](#noisy_mic_detection)
+* [`video_resolution`](#video_resolution)
+* [`start_muted`](#start_muted)
+* [`start_without_video`](#start_without_video)
+* [`enable_prejoin_page`](#enable_prejoin_page)
+* [`disable_simulcast`](#disable_simulcast)
+* [`require_display_name`](#require_display_name)
+* [`channel_last_n`](#channel_last_n)
 
 ##### <a name="jicofo_component_secret"></a>`jicofo_component_secret`
 
@@ -190,6 +203,12 @@ Data type: `String`
 If using jibri for recording or streaming, it enters the meeting as an additional
 user. If it has the domain given in this parameter it will actually be hidden.
 
+##### <a name="enable_breakout_rooms"></a>`enable_breakout_rooms`
+
+Data type: `Boolean`
+
+Enables breakout rooms
+
 ##### <a name="disable_all_audio_processing"></a>`disable_all_audio_processing`
 
 Data type: `Boolean`
@@ -220,4 +239,78 @@ Set to True if you want to disable auto gain control.
 Data type: `Boolean`
 
 Set to True if you want to disable high pass filtering.
+
+##### <a name="jwt_app_id"></a>`jwt_app_id`
+
+Data type: `String`
+
+Define an id for embedding into jwt based authentication
+
+##### <a name="jwt_app_secret"></a>`jwt_app_secret`
+
+Data type: `String`
+
+Secret for use with JWT authentication
+
+##### <a name="allow_guests"></a>`allow_guests`
+
+Data type: `Integer`
+
+If guests access is allowed
+
+##### <a name="disable_third_party_requests"></a>`disable_third_party_requests`
+
+Data type: `Boolean`
+
+when set to true, no third parties like gravatar will be called (default)
+
+##### <a name="noisy_mic_detection"></a>`noisy_mic_detection`
+
+Data type: `Boolean`
+
+set to false if you want to disable the detection of noisy mics
+
+##### <a name="video_resolution"></a>`video_resolution`
+
+Data type: `Integer`
+
+set the preferred video resolution
+
+##### <a name="start_muted"></a>`start_muted`
+
+Data type: `Boolean`
+
+use this to define if a user shall start muted (true) or with audio enabled (false)
+
+##### <a name="start_without_video"></a>`start_without_video`
+
+Data type: `Boolean`
+
+use this to define if a user shall start without video activatedf (true)
+
+##### <a name="enable_prejoin_page"></a>`enable_prejoin_page`
+
+Data type: `Boolean`
+
+the prejoin page is shown to users right before joining, asking for a name and the audio/video settings.
+Set this value to true if you want such a page
+
+##### <a name="disable_simulcast"></a>`disable_simulcast`
+
+Data type: `Boolean`
+
+Unsure about the actual effects. In my case disabling simulcast allowed me to use screensharing.
+
+##### <a name="require_display_name"></a>`require_display_name`
+
+Data type: `Boolean`
+
+Set to true if you require your users to select a name
+
+##### <a name="channel_last_n"></a>`channel_last_n`
+
+Data type: `Integer`
+
+This value can help to save bandwidth on the server. If set to a positive integer,
+only this amount of videostreams is sent, representing the last N speakers.
 
