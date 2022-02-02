@@ -74,6 +74,16 @@
 #   use this to define if a user shall start muted (true) or with audio enabled (false)
 # @param start_without_video
 #   use this to define if a user shall start without video activatedf (true)
+# @param enable_prejoin_page
+#   the prejoin page is shown to users right before joining, asking for a name and the audio/video settings.
+#   Set this value to true if you want such a page
+# @param disable_simulcast
+#   Unsure about the actual effects. In my case disabling simulcast allowed me to use screensharing.
+# @param require_display_name
+#   Set to true if you require your users to select a name
+# @param channel_last_n
+#   This value can help to save bandwidth on the server. If set to a positive integer,
+#   only this amount of videostreams is sent, representing the last N speakers.
 class jitsi::containerized_server (
   Integer $http_port,
   Integer $https_port,
@@ -102,6 +112,10 @@ class jitsi::containerized_server (
   Integer $video_resolution,
   Boolean $start_muted,
   Boolean $start_without_video,
+  Boolean $enable_prejoin_page,
+  Boolean $disable_simulcast,
+  Boolean $require_display_name,
+  Integer $channel_last_n,
 ) {
   if ($jwt_app_id != '' and $jwt_app_secret != '')
   {

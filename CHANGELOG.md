@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.6.0
+
+add new configuration options for jitsi server and change some defaults for a better experience
+
 ## 1.5.0
 
 Version bump: server to 6826

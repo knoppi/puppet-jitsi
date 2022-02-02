@@ -8,7 +8,7 @@ var config = {
     //
 
     hosts: {
-        // XMPP domain.
+        // XMPP domain. TODO: do I need to set this?
         domain: 'jitsi-meet.example.com',
 
         // When using authentication, domain for guest users.
@@ -122,7 +122,7 @@ var config = {
     // Enabling this will run the lib-jitsi-meet no audio detection module which
     // will notify the user if the current selected microphone has no audio
     // input and will suggest another valid device if one is present.
-    enableNoAudioDetection: true,
+    enableNoAudioDetection: false,
 
     // Enabling this will show a "Save Logs" link in the GSM popover that can be
     // used to collect debug information (XMPP IQs, SDP offer/answer cycles)
@@ -202,7 +202,7 @@ var config = {
     },
 
     // Enable / disable simulcast support.
-    disableSimulcast: false,
+    disableSimulcast: <%= @disable_simulcast %>,
 
     // Enable / disable layer suspension.  If enabled, endpoints whose HD layers are not in use will be suspended
     // (no longer sent) until they are requested again. This is enabled by default. This must be enabled for screen
@@ -287,7 +287,7 @@ var config = {
     // Misc
 
     // Default value for the channel "last N" attribute. -1 for unlimited.
-    channelLastN: 2,
+    channelLastN: <%= @channel_last_n %>,
 
     // Connection indicators
     // connectionIndicators: {
@@ -1262,8 +1262,8 @@ if (!config.constraints.hasOwnProperty('video')) config.constraints.video = {};
 
 config.resolution = <%= @video_resolution %>;
 config.constraints.video.height = { ideal: <%= @video_resolution %>, max: 1080, min: 180 };
-config.constraints.video.width = { ideal: 1280, max: 1280, min: 320};
-config.disableSimulcast = false;
+config.constraints.video.width = { ideal: 640, max: 1280, min: 320};
+config.disableSimulcast = <%= @disable_simulcast %>;
 config.startVideoMuted = 10;
 config.startWithVideoMuted = <%= @start_without_video %>;
 
@@ -1348,7 +1348,7 @@ config.enableCalendarIntegration = false;
 //
 
 // Prejoin page.
-config.prejoinPageEnabled = false;
+config.prejoinPageEnabled = <%= @enable_prejoin_page %>;
 
 // Welcome page.
 config.enableWelcomePage = true;
@@ -1358,7 +1358,7 @@ config.enableClosePage = false;
 
 // Default language.
 // Require users to always specify a display name.
-config.requireDisplayName = false;
+config.requireDisplayName = <%= @require_display_name %>;
 
 // Chrome extension banner.
 // Advanced.
