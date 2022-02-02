@@ -17,9 +17,13 @@ jitsi::containerized_server::jwt_app_secret: ""
 jitsi::containerized_server::allow_guests: 0
 jitsi::containerized_server::disable_third_party_requests: true
 jitsi::containerized_server::noisy_mic_detection: true
-jitsi::containerized_server::video_resolution: 720
-jitsi::containerized_server::start_muted: false
+jitsi::containerized_server::video_resolution: 480
+jitsi::containerized_server::start_muted: true
 jitsi::containerized_server::start_without_video: false
+jitsi::containerized_server::enable_prejoin_page: true
+jitsi::containerized_server::disable_simulcast: true
+jitsi::containerized_server::require_display_name: true
+jitsi::containerized_server::channel_last_n: -1
 
 jitsi::client::version: 'v2022.1.1'
 # look up in https://github.com/jitsi/jitsi-meet-electron/releases/download/v2022.1.1/latest-linux.yml
