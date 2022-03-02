@@ -120,6 +120,7 @@ class jitsi::containerized_server (
   include docker
   include docker::compose
 
+  # Determine effective value of variables
   if ($jwt_app_id != '' and $jwt_app_secret != '')
   {
     $auth_enabled = 1
@@ -130,7 +131,7 @@ class jitsi::containerized_server (
     $auth_type = 'internal'
   }
 
-
+  # ensure the correct version of the directory content
   vcsrepo { '/srv/jitsi/':
     ensure   => present,
     provider => git,
@@ -141,38 +142,45 @@ class jitsi::containerized_server (
     ensure  => present,
     content => template('jitsi/env.erb'),
   }
-  ~> exec { 'turn off jitsi':
-    cwd         => '/srv/jitsi',
-    command     => '/usr/local/bin/docker-compose down',
-    refreshonly => true,
+
+  #file { [
+  #  '/srv/jitsi/.jitsi-meet-cfg/',
+  #  '/srv/jitsi/.jitsi-meet-cfg/web',
+  #  '/srv/jitsi/.jitsi-meet-cfg/transcripts',
+  #  '/srv/jitsi/.jitsi-meet-cfg/prosody',
+  #  '/srv/jitsi/.jitsi-meet-cfg/prosody/config',
+  #  '/srv/jitsi/.jitsi-meet-cfg/prosody/prosody-plugins-custom',
+  #  '/srv/jitsi/.jitsi-meet-cfg/jicofo',
+  #  '/srv/jitsi/.jitsi-meet-cfg/jvb',
+  #  ] :
+  #    ensure => directory,
+  #}
+
+  # start jitsi if it's not running yet
+  if $facts['jitsi.running'] != true {
+    exec { 'turn on jitsi':
+      cwd         => '/srv/jitsi',
+      command     => '/usr/local/bin/docker-compose up -d',
+    }
   }
-  ~> exec { '/usr/bin/rm -Rf /srv/jitsi/.jitsi-meet-cfg' :
-    refreshonly => true,
+  else {
+    if $facts['jitsi.version'] != $version {
+      exec { 'turn off jitsi':
+        cwd         => '/srv/jitsi',
+        command     => '/usr/local/bin/docker-compose down',
+        refreshonly => true,
+      }
+      exec { '/usr/bin/rm -Rf /srv/jitsi/.jitsi-meet-cfg' : }
+      exec { 'turn on jitsi':
+        cwd         => '/srv/jitsi',
+        command     => '/usr/local/bin/docker-compose up -d',
+      }
+    }
   }
 
-  file { [
-    '/srv/jitsi/.jitsi-meet-cfg/',
-    '/srv/jitsi/.jitsi-meet-cfg/web',
-    '/srv/jitsi/.jitsi-meet-cfg/transcripts',
-    '/srv/jitsi/.jitsi-meet-cfg/prosody',
-    '/srv/jitsi/.jitsi-meet-cfg/prosody/config',
-    '/srv/jitsi/.jitsi-meet-cfg/prosody/prosody-plugins-custom',
-    '/srv/jitsi/.jitsi-meet-cfg/jicofo',
-    '/srv/jitsi/.jitsi-meet-cfg/jvb',
-    ] :
-      ensure => directory,
-  }
 
-  exec { 'turn on jitsi':
-    cwd         => '/srv/jitsi',
-    command     => '/usr/local/bin/docker-compose up -d',
-    subscribe   => [
-      Vcsrepo['/srv/jitsi/'],
-      Exec['turn off jitsi'],
-    ],
-    refreshonly => true,
-  }
 
+  # do this at the end, otherwise the content is overwritten
   file { '/srv/jitsi/.jitsi-meet-cfg/web/config.js':
     ensure  => present,
     content => template('jitsi/web_config.js.erb'),
