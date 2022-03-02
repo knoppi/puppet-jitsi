@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.7.0
+
+* control of server mainly determined by custom facts
+* bump server to stable-6865
+* bump client to 2022.2.1
+
 ## 1.6.1
 
 extend REFERENCE for new parameters
