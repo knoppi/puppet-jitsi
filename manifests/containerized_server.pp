@@ -157,14 +157,14 @@ class jitsi::containerized_server (
   #}
 
   # start jitsi if it's not running yet
-  if $facts['jitsi.running'] != true {
+  if $facts['jitsi']['running'] != true {
     exec { 'turn on jitsi':
       cwd     => '/srv/jitsi',
       command => '/usr/local/bin/docker-compose up -d',
     }
   }
   else {
-    if $facts['jitsi.version'] != $version {
+    if $facts['jitsi']['version'] != $version {
       exec { 'turn off jitsi':
         cwd         => '/srv/jitsi',
         command     => '/usr/local/bin/docker-compose down',
