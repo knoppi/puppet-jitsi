@@ -6,3 +6,6 @@ fixtures:
      remote_file: "lwf/remote_file"
      vcsrepo: "puppetlabs/vcsrepo"
      docker: "puppetlabs/docker"
+     apt: "puppetlabs/apt"
+     stdlib: "puppetlabs/stdlib"
+     yumrepo_core: "puppetlabs/yumrepo_core"

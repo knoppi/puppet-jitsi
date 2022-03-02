@@ -30,6 +30,12 @@ spec/spec_helper.rb:
   coverage_report: true
   minimum_code_coverage_percentage: 80
   hiera_config_ruby: "File.expand_path(File.join(__FILE__, '../fixtures/hiera.yaml'))"
+spec/default_facts.yml:
+  extra_facts:
+    jitsi:
+      installed: true
+      running: true
+      version: 0.0.0
 .rubocop.yml:
   default_configs:
     Style/RegexpLiteral:
