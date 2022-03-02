@@ -117,6 +117,9 @@ class jitsi::containerized_server (
   Boolean $require_display_name,
   Integer $channel_last_n,
 ) {
+  include docker
+  include docker::compose
+
   if ($jwt_app_id != '' and $jwt_app_secret != '')
   {
     $auth_enabled = 1
