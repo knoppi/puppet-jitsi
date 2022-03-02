@@ -159,8 +159,8 @@ class jitsi::containerized_server (
   # start jitsi if it's not running yet
   if $facts['jitsi.running'] != true {
     exec { 'turn on jitsi':
-      cwd         => '/srv/jitsi',
-      command     => '/usr/local/bin/docker-compose up -d',
+      cwd     => '/srv/jitsi',
+      command => '/usr/local/bin/docker-compose up -d',
     }
   }
   else {
@@ -172,13 +172,11 @@ class jitsi::containerized_server (
       }
       exec { '/usr/bin/rm -Rf /srv/jitsi/.jitsi-meet-cfg' : }
       exec { 'turn on jitsi':
-        cwd         => '/srv/jitsi',
-        command     => '/usr/local/bin/docker-compose up -d',
+        cwd     => '/srv/jitsi',
+        command => '/usr/local/bin/docker-compose up -d',
       }
     }
   }
-
-
 
   # do this at the end, otherwise the content is overwritten
   file { '/srv/jitsi/.jitsi-meet-cfg/web/config.js':

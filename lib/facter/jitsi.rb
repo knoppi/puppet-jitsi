@@ -1,37 +1,36 @@
 #!/usr/bin/ruby -w
 
-Facter.add(:jitsi, :type => :aggregate) do
-  if File.exist? '/usr/bin/docker'
-    docker_output = Facter::Core::Execution.execute('docker ps | grep jitsi/web')[/stable-[^\s]*/]
-  else
-    docker_output = nil
-  end
+Facter.add(:jitsi, type: :aggregate) do
+  docker_output = if File.exist? '/usr/bin/docker'
+                    Facter::Core::Execution.execute('docker ps | grep jitsi/web')[/stable-[^\s]*/]
+                  else
+                    nil
+                  end
 
   chunk(:installed) do
-    if File.exist? '/srv/jitsi'
-      jitsi = {:installed => true}
-    else
-      jitsi = {:installed => false}
-    end
+    jitsi = if File.exist? '/srv/jitsi'
+              { installed: true }
+            else
+              { installed: false }
+            end
     jitsi
   end
 
   chunk(:running) do
-    if docker_output == nil
-      jitsi = {:running => false}
-    else
-      jitsi = {:running => true}
-    end
+    jitsi = if docker_output.nil?
+              { running: false }
+            else
+              { running: true }
+            end
     jitsi
   end
 
   chunk(:version) do
-    if docker_output == nil
-      jitsi = {:version => "0.0.0"}
-    else
-      jitsi = {:version => docker_output}
-    end
+    jitsi = if docker_output.nil?
+              { version: '0.0.0' }
+            else
+              { version: docker_output }
+            end
     jitsi
   end
 end
-
