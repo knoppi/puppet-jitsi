@@ -166,8 +166,8 @@ class jitsi::containerized_server (
   else {
     if $facts['jitsi']['version'] != $version {
       exec { 'turn off jitsi':
-        cwd         => '/srv/jitsi',
-        command     => '/usr/local/bin/docker-compose down',
+        cwd     => '/srv/jitsi',
+        command => '/usr/local/bin/docker-compose down',
       }
       exec { '/usr/bin/rm -Rf /srv/jitsi/.jitsi-meet-cfg' : }
       exec { 'turn on jitsi':
