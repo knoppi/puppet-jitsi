@@ -143,19 +143,6 @@ class jitsi::containerized_server (
     content => template('jitsi/env.erb'),
   }
 
-  #file { [
-  #  '/srv/jitsi/.jitsi-meet-cfg/',
-  #  '/srv/jitsi/.jitsi-meet-cfg/web',
-  #  '/srv/jitsi/.jitsi-meet-cfg/transcripts',
-  #  '/srv/jitsi/.jitsi-meet-cfg/prosody',
-  #  '/srv/jitsi/.jitsi-meet-cfg/prosody/config',
-  #  '/srv/jitsi/.jitsi-meet-cfg/prosody/prosody-plugins-custom',
-  #  '/srv/jitsi/.jitsi-meet-cfg/jicofo',
-  #  '/srv/jitsi/.jitsi-meet-cfg/jvb',
-  #  ] :
-  #    ensure => directory,
-  #}
-
   # start jitsi if it's not running yet
   if $facts['jitsi']['running'] != true {
     exec { 'turn on jitsi':
