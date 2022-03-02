@@ -168,7 +168,6 @@ class jitsi::containerized_server (
       exec { 'turn off jitsi':
         cwd         => '/srv/jitsi',
         command     => '/usr/local/bin/docker-compose down',
-        refreshonly => true,
       }
       exec { '/usr/bin/rm -Rf /srv/jitsi/.jitsi-meet-cfg' : }
       exec { 'turn on jitsi':
