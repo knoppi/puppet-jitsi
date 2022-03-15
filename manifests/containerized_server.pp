@@ -149,7 +149,7 @@ class jitsi::containerized_server (
   }
 
   if $facts['jitsi']['version'] != $version {
-    exec { '/usr/bin/rm -Rf /srv/jitsi/.jitsi-meet-cfg' :
+    notify { 'Need to restart jitsi because there is a version change.':
       notify => Service['jitsi'],
     }
   }

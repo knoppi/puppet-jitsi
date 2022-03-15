@@ -11,10 +11,10 @@ describe 'jitsi::containerized_server' do
         is_expected.to compile
         is_expected.to contain_vcsrepo('/srv/jitsi/')
         is_expected.to contain_file('/srv/jitsi/.env')
-        is_expected.to contain_exec('/usr/bin/rm -Rf /srv/jitsi/.jitsi-meet-cfg')
         is_expected.to contain_file('/srv/jitsi/.jitsi-meet-cfg/web/config.js')
         is_expected.to contain_service('jitsi')
         is_expected.to contain_systemd__unit_file('jitsi.service')
+        is_expected.to contain_notify('Need to restart jitsi because there is a version change.')
 
         # check the content of the config file
         content = catalogue.resource(
