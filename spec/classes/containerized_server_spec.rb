@@ -11,10 +11,10 @@ describe 'jitsi::containerized_server' do
         is_expected.to compile
         is_expected.to contain_vcsrepo('/srv/jitsi/')
         is_expected.to contain_file('/srv/jitsi/.env')
-        is_expected.to contain_exec('turn off jitsi')
-        is_expected.to contain_exec('turn on jitsi')
         is_expected.to contain_exec('/usr/bin/rm -Rf /srv/jitsi/.jitsi-meet-cfg')
         is_expected.to contain_file('/srv/jitsi/.jitsi-meet-cfg/web/config.js')
+        is_expected.to contain_service('jitsi')
+        is_expected.to contain_systemd__unit_file('jitsi.service')
 
         # check the content of the config file
         content = catalogue.resource(
@@ -40,10 +40,10 @@ describe 'jitsi::containerized_server' do
         expect(content_env).to match 'JIBRI_XMPP_PASSWORD=JIBRI_XMPP_PASSWORD'
 
         # uncomment this for storing the generated catalogue
-        File.write(
-          'containerized_server.json',
-          PSON.pretty_generate(catalogue),
-        )
+        # File.write(
+        #   'containerized_server.json',
+        #   PSON.pretty_generate(catalogue),
+        # )
       end
     end
   end

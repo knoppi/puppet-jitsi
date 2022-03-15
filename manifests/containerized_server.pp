@@ -143,25 +143,19 @@ class jitsi::containerized_server (
     content => template('jitsi/env.erb'),
   }
 
-  # start jitsi if it's not running yet
-  if $facts['jitsi']['running'] != true {
-    exec { 'turn on jitsi':
-      cwd     => '/srv/jitsi',
-      command => '/usr/local/bin/docker-compose up -d',
+  systemd::unit_file{ 'jitsi.service':
+    content => template('jitsi/jitsi.service.erb'),
+    notify  => Service['jitsi'],
+  }
+
+  if $facts['jitsi']['version'] != $version {
+    exec { '/usr/bin/rm -Rf /srv/jitsi/.jitsi-meet-cfg' :
+      notify => Service['jitsi'],
     }
   }
-  else {
-    if $facts['jitsi']['version'] != $version {
-      exec { 'turn off jitsi':
-        cwd     => '/srv/jitsi',
-        command => '/usr/local/bin/docker-compose down',
-      }
-      exec { '/usr/bin/rm -Rf /srv/jitsi/.jitsi-meet-cfg' : }
-      exec { 'turn on jitsi':
-        cwd     => '/srv/jitsi',
-        command => '/usr/local/bin/docker-compose up -d',
-      }
-    }
+
+  service { 'jitsi':
+    ensure => running,
   }
 
   # do this at the end, otherwise the content is overwritten
