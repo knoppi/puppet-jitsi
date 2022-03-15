@@ -148,7 +148,7 @@ class jitsi::containerized_server (
     notify  => Service['jitsi'],
   }
 
-  if $facts['jitsi']['version'] != $version {
+  if ($facts['jitsi']['version'] != $version and $facts['jitsi']['version'] != '0.0.0') {
     notify { 'Need to restart jitsi because there is a version change.':
       notify => Service['jitsi'],
     }
