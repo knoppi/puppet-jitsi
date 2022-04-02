@@ -77,8 +77,8 @@
 # @param enable_prejoin_page
 #   the prejoin page is shown to users right before joining, asking for a name and the audio/video settings.
 #   Set this value to true if you want such a page
-# @param disable_simulcast
-#   Unsure about the actual effects. In my case disabling simulcast allowed me to use screensharing.
+# @param enable_simulcast
+#   Unsure about the actual effects.
 # @param require_display_name
 #   Set to true if you require your users to select a name
 # @param channel_last_n
@@ -113,7 +113,7 @@ class jitsi::containerized_server (
   Boolean $start_muted,
   Boolean $start_without_video,
   Boolean $enable_prejoin_page,
-  Boolean $disable_simulcast,
+  Boolean $enable_simulcast,
   Boolean $require_display_name,
   Integer $channel_last_n,
 ) {
@@ -159,10 +159,17 @@ class jitsi::containerized_server (
   }
 
   # do this at the end, otherwise the content is overwritten
-  file { '/srv/jitsi/.jitsi-meet-cfg/web/config.js':
-    ensure  => present,
-    content => template('jitsi/web_config.js.erb'),
-    backup  => '.puppet-bak',
-  }
+  # file { '/srv/jitsi/.jitsi-meet-cfg/web/config.js':
+  #   ensure  => present,
+  #   content => template('jitsi/web_config.js.erb'),
+  #   backup  => '.puppet-bak',
+  # }
 
+  # TODO add these entries back to config.js
+  # disableThirdPartyRequests: <%= @disable_third_party_requests %>,
+  # config.disableAP = <%= @disable_all_audio_processing %>;
+  # config.disableAEC = <%= @disable_echo_cancellation %>;
+  # config.disableNS = <%= @disable_noise_supression %>;
+  # config.disableAGC = <%= @disable_auto_gain_control %>;
+  # config.disableHPF = <%= @disable_high_pass_filter %>;
 }

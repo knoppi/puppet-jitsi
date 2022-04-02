@@ -21,7 +21,7 @@ jitsi::containerized_server::video_resolution: 480
 jitsi::containerized_server::start_muted: true
 jitsi::containerized_server::start_without_video: false
 jitsi::containerized_server::enable_prejoin_page: true
-jitsi::containerized_server::disable_simulcast: true
+jitsi::containerized_server::enable_simulcast: true
 jitsi::containerized_server::require_display_name: true
 jitsi::containerized_server::channel_last_n: -1
 
