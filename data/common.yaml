@@ -25,8 +25,8 @@ jitsi::containerized_server::enable_simulcast: true
 jitsi::containerized_server::require_display_name: true
 jitsi::containerized_server::channel_last_n: -1
 
-jitsi::client::version: 'v2022.3.1'
-# look up in https://github.com/jitsi/jitsi-meet-electron/releases/download/v2022.3.1/latest-linux.yml
-# echo "DhEzOvc2ia5p3+D2L37YNc8Qx1qEdtjQ1hR811A3+oPmS9w/srnMxG4jhX9JNQTdCGLQkG6p5a5+1r7Z/HOyiw==" | base64 -d | xxd -p
-jitsi::client::checksum: 0e11333af73689ae69dfe0f62f7ed835cf10c75a8476d8d0d6147cd75037fa83e64bdc3fb2b9ccc46e23857f493504dd0862d0906ea9e5ae7ed6bed9fc73b28b
+jitsi::client::version: 'v2022.4.1'
+# look up in https://github.com/jitsi/jitsi-meet-electron/releases/download/v2022.4.1/latest-linux.yml
+# echo "8dD3bynRdyhz6qxjzrzekqTTdsfYWbcx2OWqnEsYVnQ0eu/x2GGwv3MAAAbuF8XOZkeMKyzcWjDA11cE9wYkTw==" | base64 -d | xxd -p
+jitsi::client::checksum: f1d0f76f29d1772873eaac63cebcde92a4d376c7d859b731d8e5aa9c4b185674347aeff1d861b0bf73000006ee17c5ce66478c2b2cdc5a30c0d75704f706244f
 jitsi::client::checksum_type: 'sha512'
