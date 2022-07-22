@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.7.1
+
+* bump client to 2022.7.1
+
 ## 1.7.0
 
 * control of server mainly determined by custom facts
