@@ -77,8 +77,8 @@
 # @param enable_prejoin_page
 #   the prejoin page is shown to users right before joining, asking for a name and the audio/video settings.
 #   Set this value to true if you want such a page
-# @param disable_simulcast
-#   Unsure about the actual effects. In my case disabling simulcast allowed me to use screensharing.
+# @param enable_simulcast
+#   Unsure about the actual effects.
 # @param require_display_name
 #   Set to true if you require your users to select a name
 # @param channel_last_n
@@ -113,7 +113,7 @@ class jitsi::containerized_server (
   Boolean $start_muted,
   Boolean $start_without_video,
   Boolean $enable_prejoin_page,
-  Boolean $disable_simulcast,
+  Boolean $enable_simulcast,
   Boolean $require_display_name,
   Integer $channel_last_n,
 ) {
@@ -143,32 +143,33 @@ class jitsi::containerized_server (
     content => template('jitsi/env.erb'),
   }
 
-  # start jitsi if it's not running yet
-  if $facts['jitsi']['running'] != true {
-    exec { 'turn on jitsi':
-      cwd     => '/srv/jitsi',
-      command => '/usr/local/bin/docker-compose up -d',
+  systemd::unit_file{ 'jitsi.service':
+    content => template('jitsi/jitsi.service.erb'),
+    notify  => Service['jitsi'],
+  }
+
+  if ($facts['jitsi']['version'] != $version and $facts['jitsi']['version'] != '0.0.0') {
+    notify { 'Need to restart jitsi because there is a version change.':
+      notify => Service['jitsi'],
     }
   }
-  else {
-    if $facts['jitsi']['version'] != $version {
-      exec { 'turn off jitsi':
-        cwd     => '/srv/jitsi',
-        command => '/usr/local/bin/docker-compose down',
-      }
-      exec { '/usr/bin/rm -Rf /srv/jitsi/.jitsi-meet-cfg' : }
-      exec { 'turn on jitsi':
-        cwd     => '/srv/jitsi',
-        command => '/usr/local/bin/docker-compose up -d',
-      }
-    }
+
+  service { 'jitsi':
+    ensure => running,
   }
 
   # do this at the end, otherwise the content is overwritten
-  file { '/srv/jitsi/.jitsi-meet-cfg/web/config.js':
-    ensure  => present,
-    content => template('jitsi/web_config.js.erb'),
-    backup  => '.puppet-bak',
-  }
+  # file { '/srv/jitsi/.jitsi-meet-cfg/web/config.js':
+  #   ensure  => present,
+  #   content => template('jitsi/web_config.js.erb'),
+  #   backup  => '.puppet-bak',
+  # }
 
+  # TODO add these entries back to config.js
+  # disableThirdPartyRequests: <%= @disable_third_party_requests %>,
+  # config.disableAP = <%= @disable_all_audio_processing %>;
+  # config.disableAEC = <%= @disable_echo_cancellation %>;
+  # config.disableNS = <%= @disable_noise_supression %>;
+  # config.disableAGC = <%= @disable_auto_gain_control %>;
+  # config.disableHPF = <%= @disable_high_pass_filter %>;
 }

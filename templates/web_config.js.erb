@@ -86,8 +86,11 @@ var config = {
     // Disables moderator indicators.
     // disableModeratorIndicator: false,
 
-    // Disables the reactions feature. TODO
-    disableReactions: false,
+    // Disables the reactions feature.
+    // disableReactions: true,
+
+    // Disables the reactions moderation feature.
+    // disableReactionsModeration: false,
 
     // Disables polls feature.
     // disablePolls: false,
@@ -97,6 +100,17 @@ var config = {
 
     // Disables self-view settings in UI TODO
     // disableSelfViewSettings: false,
+
+    // screenshotCapture : {
+    //      Enables the screensharing capture feature.
+    //      enabled: false,
+    //
+    //      The mode for the screenshot capture feature.
+    //      Can be either 'recording' - screensharing screenshots are taken
+    //      only when the recording is also on,
+    //      or 'always' - screensharing screenshots are always taken.
+    //      mode: 'recording'
+    // }
 
     // Disables ICE/UDP by filtering out local and remote UDP candidates in
     // signalling.
@@ -201,7 +215,7 @@ var config = {
         }
     },
 
-    // Enable / disable simulcast support.
+    // Enable / disable simulcast support. TODO
     disableSimulcast: <%= @disable_simulcast %>,
 
     // Enable / disable layer suspension.  If enabled, endpoints whose HD layers are not in use will be suspended
@@ -236,7 +250,11 @@ var config = {
     //     max: 5
     // },
 
-    // Try to start calls with screen-sharing instead of camera video.
+    // This option has been deprecated since it is no longer supported as per the w3c spec.
+    // https://w3c.github.io/mediacapture-screen-share/#dom-mediadevices-getdisplaymedia. If the user has not
+    // interacted with the webpage before the getDisplayMedia call, the promise will be rejected by the browser. This
+    // has already been implemented in Firefox and Safari and will be implemented in Chrome soon.
+    // https://bugs.chromium.org/p/chromium/issues/detail?id=1198918
     // startScreenSharing: false,
 
     // Recording
@@ -458,6 +476,7 @@ var config = {
     // If Lobby is enabled starts knocking automatically.
     // autoKnockLobby: false,
 
+    // DEPRECATED! Use `breakoutRooms.hideAddRoomButton` instead.
     // Hides add breakout room button
     // hideAddRoomButton: false,
 
@@ -490,8 +509,11 @@ var config = {
     // Default remote name to be displayed
     // defaultRemoteDisplayName: 'Fellow Jitster',
 
-    // Hides the display name from the participant thumbnail TODO
-    // hideDisplayName: false
+    // Hides the display name from the participant thumbnail
+    // hideDisplayName: false,
+
+    // Hides the dominant speaker name badge that hovers above the toolbox
+    // hideDominantSpeakerBadge: false,
 
     // Default language for the user interface.
     // defaultLanguage: 'en',
@@ -723,6 +745,9 @@ var config = {
 
     // Enables detecting faces of participants and get their expression and send it to other participants
     // enableFacialRecognition: true,
+
+    // Enables displaying facial expressions in speaker stats
+    // enableDisplayFacialExpressions: true,
 
     // Controls the percentage of automatic feedback shown to participants when callstats is enabled.
     // The default value is 100%. If set to 0, no automatic feedback will be requested
@@ -1027,6 +1052,14 @@ var config = {
     */
     // dynamicBrandingUrl: '',
 
+    // Options related to the breakout rooms feature.
+    // breakoutRooms: {
+    //     // Hides the add breakout room button. This replaces `hideAddRoomButton`.
+    //     hideAddRoomButton: false,
+    //     // Hides the join breakout room button.
+    //     hideJoinRoomButton: false
+    // },
+
     // When true the user cannot add more images to be used as virtual background.
     // Only the default ones from will be available.
     // disableAddingBackgroundImages: false,
@@ -1146,6 +1179,7 @@ var config = {
      forceJVB121Ratio
      forceTurnRelay
      hiddenDomain
+     hiddenFromRecorderFeatureEnabled
      ignoreStartMuted
      websocketKeepAlive
      websocketKeepAliveUrl
@@ -1210,6 +1244,7 @@ var config = {
     //     'notify.mutedTitle', // shown when user has been muted upon joining,
     //     'notify.newDeviceAudioTitle', // prompts the user to use a newly detected audio device
     //     'notify.newDeviceCameraTitle', // prompts the user to use a newly detected camera
+    //     'notify.participantWantsToJoin', // shown when lobby is enabled and participant requests to join meeting
     //     'notify.passwordRemovedRemotely', // shown when a password has been removed remotely
     //     'notify.passwordSetRemotely', // shown when a password has been set remotely
     //     'notify.raisedHand', // shown when a partcipant used raise hand,
@@ -1233,6 +1268,13 @@ var config = {
     // Prevent the filmstrip from autohiding when screen width is under a certain threshold
     // disableFilmstripAutohiding: false,
 
+    // filmstrip: {
+    //     // Disables user resizable filmstrip. Also, allows configuration of the filmstrip
+    //     // (width, tiles aspect ratios) through the interfaceConfig options.
+    //     disableResizable: false,
+    // }
+
+
     // Specifies whether the chat emoticons are disabled or not
     // disableChatSmileys: false,
 
@@ -1252,7 +1294,11 @@ if (!config.hasOwnProperty('hosts')) config.hosts = {};
 config.hosts.domain = 'meet.jitsi';
 config.focusUserJid = 'focus@auth.meet.jitsi';
 
-config.hosts.muc = 'muc.meet.jitsi';
+var subdomain = "<!--# echo var="subdomain" default="" -->";
+if (subdomain) {
+    subdomain = subdomain.substr(0,subdomain.length-1).split('.').join('_').toLowerCase() + '.';
+}
+config.hosts.muc = 'muc.'+subdomain+'meet.jitsi';
 config.bosh = '/http-bind';
 // Video configuration.
 //
@@ -1409,3 +1455,5 @@ config.disablePolls = false;
 
 // Configure toolbar buttons
 // Hides the buttons at pre-join screen
+// Configure remote participant video menu
+if (!config.hasOwnProperty('remoteVideoMenu')) config.remoteVideoMenu = {};
