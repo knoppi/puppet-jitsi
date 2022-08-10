@@ -12,6 +12,28 @@ Upgrading containerized server
 * on a target host deploy instance
 * check for backup of web config, compare to your version in templates
 
+### Find out which variables can be set
+
+Check out git repository `https://github.com/jitsi/docker-jitsi-meet`.
+Convert `docker-compose.yaml` to json and parse all environment variables:
+
+~~~
+ENV_VARIABLES=$(cat docker-compose.yml.json | jq .services[].environment[] -r | sort -u)
+~~~
+
+Verify which variable is not yet included in `templates/env.erb`
+
+~~~
+cd /path/to/jitsi-module
+for i in ${ENV_VARIABLES}
+do
+  if ! grep -q $i templates/env.erb
+  then
+    echo $i
+  fi
+done
+~~~
+
 Upgrade AppImage client
 -----------------------
 
