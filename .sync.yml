@@ -35,7 +35,7 @@ spec/default_facts.yml:
     jitsi:
       installed: true
       running: true
-      version: 0.0.0
+      version: 0.0.1
 .rubocop.yml:
   default_configs:
     Style/RegexpLiteral:

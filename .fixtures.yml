@@ -9,3 +9,5 @@ fixtures:
      apt: "puppetlabs/apt"
      stdlib: "puppetlabs/stdlib"
      yumrepo_core: "puppetlabs/yumrepo_core"
+     systemd: "puppet/systemd"
+     inifile: "puppetlabs/inifile"
