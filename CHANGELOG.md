@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.7.3
+
+* bump server to stable-8044
+* bump client to 2022.10.1
+
 ## 1.7.2
 
 * bump server to stable-7577-2
