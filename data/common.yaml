@@ -5,7 +5,7 @@ jitsi::containerized_server::timezone: "Europe/Amsterdam"
 jitsi::containerized_server::public_url: "https://meet.example.com"
 jitsi::containerized_server::jibri_domain: "https://jibri.meet.example.com"
 jitsi::containerized_server::domain: "meet.example.com"
-jitsi::containerized_server::version: 'stable-7577-2'
+jitsi::containerized_server::version: 'stable-8044'
 jitsi::containerized_server::disable_all_audio_processing: false
 jitsi::containerized_server::disable_echo_cancellation: false
 jitsi::containerized_server::disable_noise_supression: false
@@ -25,8 +25,8 @@ jitsi::containerized_server::enable_simulcast: true
 jitsi::containerized_server::require_display_name: true
 jitsi::containerized_server::channel_last_n: -1
 
-jitsi::client::version: 'v2022.8.1'
-# look up in https://github.com/jitsi/jitsi-meet-electron/releases/download/v2022.8.1/latest-linux.yml
-# echo "je+keBhQiwSXlNs4eUkLrvOcgcVH9t8HHBmEyybXM5rKTV3AvctWpt/uJaIVaB4OyFHCYjOXBJZNxuPr4B90/Q==" | base64 -d | xxd -p
-jitsi::client::checksum: 8defa47818508b049794db3879490baef39c81c547f6df071c1984cb26d7339aca4d5dc0bdcb56a6dfee25a215681e0ec851c262339704964dc6e3ebe01f74fd
+jitsi::client::version: 'v2022.10.1'
+# look up in https://github.com/jitsi/jitsi-meet-electron/releases/download/v2022.10.1/latest-linux.yml
+# echo "RN/q+2PXnznUkALDDRaB4QlFR5riiW9CklnL1J+XF+ODHbHNlu3ZHMLzVyyHuV1sgsamWVTbUR/zd77eFV+6/A==" | base64 -d | xxd -p
+jitsi::client::checksum: 44dfeafb63d79f39d49002c30d1681e10945479ae2896f429259cbd49f9717e3831db1cd96edd91cc2f3572c87b95d6c82c6a65954db511ff377bede155fbafc
 jitsi::client::checksum_type: 'sha512'

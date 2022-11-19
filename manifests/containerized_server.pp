@@ -121,8 +121,7 @@ class jitsi::containerized_server (
   include docker::compose
 
   # Determine effective value of variables
-  if ($jwt_app_id != '' and $jwt_app_secret != '')
-  {
+  if ($jwt_app_id != '' and $jwt_app_secret != '') {
     $auth_enabled = 1
     $auth_type = 'jwt'
   }
@@ -139,11 +138,11 @@ class jitsi::containerized_server (
     revision => $version,
   }
   -> file { '/srv/jitsi/.env':
-    ensure  => present,
+    ensure  => file,
     content => template('jitsi/env.erb'),
   }
 
-  systemd::unit_file{ 'jitsi.service':
+  systemd::unit_file { 'jitsi.service':
     content => template('jitsi/jitsi.service.erb'),
     notify  => Service['jitsi'],
   }
