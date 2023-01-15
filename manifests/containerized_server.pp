@@ -125,7 +125,7 @@ class jitsi::containerized_server (
   Boolean $enable_simulcast,
   Boolean $require_display_name,
   Integer $channel_last_n,
-  Optional[Array[String]] $custom_variables,
+  Optional[Hash[String]] $custom_variables,
 ) {
   include docker
   include docker::compose

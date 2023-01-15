@@ -317,7 +317,7 @@ only this amount of videostreams is sent, representing the last N speakers.
 
 ##### <a name="custom_variables"></a>`custom_variables`
 
-Data type: `Array[String]`
+Data type: `Hash[String]`
 
 Add custom environment variables which are documented at
 [Self-Hosting Guide - Docker](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker/).
