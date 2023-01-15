@@ -113,6 +113,7 @@ The following parameters are available in the `jitsi::containerized_server` clas
 * [`disable_simulcast`](#disable_simulcast)
 * [`require_display_name`](#require_display_name)
 * [`channel_last_n`](#channel_last_n)
+* [`custom_variables`](#custom_variables)
 * [`compose_jigasi`](#compose_jigasi)
 * [`compose_jibri`](#compose_jibri)
 * [`compose_etherpad`](#compose_etherpad)
@@ -334,4 +335,10 @@ Compose and start Jibri container, the broadcasting infrastructure.
 Data type: `Boolean`
 
 Compose and start Etherpad container, a real-time collaborative editor.
+=======
+##### <a name="custom_variables"></a>`custom_variables`
 
+Data type: `Hash[String]`
+
+Add custom environment variables which are documented at
+[Self-Hosting Guide - Docker](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker/).
