@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.8.0
+
+* new server parameter:
+  * possibility to add custom parameters [PR #1](https://github.com/knoppi/puppet-jitsi/pull/1)
+  * trigger additional compose files [PR #2](https://github.com/knoppi/puppet-jitsi/pull/2)
+* bump server to stable-8218
+* bump client to 2022.12.0
+
 ## 1.7.3
 
 * bump server to stable-8044
