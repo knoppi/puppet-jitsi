@@ -66,7 +66,6 @@ Settings concerning the web frontend are changed in `${CONFIG_DIR}/web/config.js
 Both are rendered from templates.
 
 You can add environment variables used by docker-compose via custom_variables parameter, if they aren't represented as a parameter itself:
-
 ```
 jitsi::containerized_server::custom_variables:
   - DISABLE_AUDIO_LEVELS=0
