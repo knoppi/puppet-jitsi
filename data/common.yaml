@@ -24,6 +24,10 @@ jitsi::containerized_server::enable_prejoin_page: true
 jitsi::containerized_server::enable_simulcast: true
 jitsi::containerized_server::require_display_name: true
 jitsi::containerized_server::channel_last_n: -1
+jitsi::containerized_server::custom_variables: {}
+jitsi::containerized_server::compose_jigasi: false
+jitsi::containerized_server::compose_jibri: false
+jitsi::containerized_server::compose_etherpad: false
 
 jitsi::client::version: 'v2022.12.0'
 # look up in https://github.com/jitsi/jitsi-meet-electron/releases/download/v2022.12.0/latest-linux.yml
