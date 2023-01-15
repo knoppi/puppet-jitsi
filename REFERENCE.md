@@ -338,7 +338,7 @@ Compose and start Etherpad container, a real-time collaborative editor.
 =======
 ##### <a name="custom_variables"></a>`custom_variables`
 
-Data type: `Hash[String]`
+Data type: `Hash[String, Variant[Integer, String, Boolean]]`
 
 Add custom environment variables which are documented at
 [Self-Hosting Guide - Docker](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker/).

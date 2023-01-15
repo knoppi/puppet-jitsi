@@ -125,7 +125,7 @@ class jitsi::containerized_server (
   Boolean $enable_simulcast,
   Boolean $require_display_name,
   Integer $channel_last_n,
-  Optional[Hash[String]] $custom_variables,
+  Optional[Hash[String, Variant[Integer, String, Boolean]]] $custom_variables,
   Boolean $compose_jigasi,
   Boolean $compose_jibri,
   Boolean $compose_etherpad,
