@@ -126,6 +126,9 @@ class jitsi::containerized_server (
   Boolean $require_display_name,
   Integer $channel_last_n,
   Optional[Hash[String]] $custom_variables,
+  Boolean $compose_jigasi,
+  Boolean $compose_jibri,
+  Boolean $compose_etherpad,
 ) {
   include docker
   include docker::compose

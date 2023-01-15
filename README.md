@@ -112,6 +112,15 @@ jitsi::containerized_server::disable_auto_gain_control: true
 jitsi::containerized_server::disable_high_pass_filter: true
 ```
 
+#### Starting additional containers
+
+You can add additional container to compose process (like Jigasi, Jibri and Etherpad) using these parameters:
+```
+jitsi::containerized_server::compose_jigasi: false
+jitsi::containerized_server::compose_jibri: false
+jitsi::containerized_server::compose_etherpad: false
+```
+
 ## Notes
 
 This is an experiment on how to handle standalone containerized applications.
