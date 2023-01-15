@@ -8,7 +8,11 @@ User=root
 Type=oneshot
 RemainAfterExit=true
 WorkingDirectory=/srv/jitsi
-ExecStart=/usr/local/bin/docker-compose up -d --remove-orphans
+ExecStart=/usr/local/bin/docker-compose -f docker-compose.yml<% if @compose_jigasi == true -%>
+  -f jigasi.yml <% end %><% if @compose_jibri == true -%>
+  -f jibri.yml <% end %><% if @compose_etherpad == true -%>
+  -f etherpad.yml <% end -%>
+  up -d --remove-orphans
 ExecStop=/usr/local/bin/docker-compose down
 
 [Install]

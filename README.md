@@ -65,6 +65,13 @@ Most of the settings are passed to the containers as environment variable using 
 Settings concerning the web frontend are changed in `${CONFIG_DIR}/web/config.js`.
 Both are rendered from templates.
 
+You can add environment variables (see [Self-Hosting Guide - Docker](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker/)) via custom_variables parameter, if they aren't represented as a parameter itself:
+```
+jitsi::containerized_server::custom_variables:
+  DISABLE_AUDIO_LEVELS: 0
+  ENABLE_END_CONFERENCE: 0
+```
+
 #### Changing ports
 
 You can, for instance, change the ports the containers expose.
@@ -103,6 +110,15 @@ jitsi::containerized_server::disable_echo_cancellation: false
 jitsi::containerized_server::disable_noise_supression: false
 jitsi::containerized_server::disable_auto_gain_control: true
 jitsi::containerized_server::disable_high_pass_filter: true
+```
+
+#### Starting additional containers
+
+You can add additional container to compose process (like Jigasi, Jibri and Etherpad) using these parameters:
+```
+jitsi::containerized_server::compose_jigasi: false
+jitsi::containerized_server::compose_jibri: false
+jitsi::containerized_server::compose_etherpad: false
 ```
 
 ## Notes
