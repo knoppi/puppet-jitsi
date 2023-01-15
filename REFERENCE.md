@@ -113,6 +113,9 @@ The following parameters are available in the `jitsi::containerized_server` clas
 * [`disable_simulcast`](#disable_simulcast)
 * [`require_display_name`](#require_display_name)
 * [`channel_last_n`](#channel_last_n)
+* [`compose_jigasi`](#compose_jigasi)
+* [`compose_jibri`](#compose_jibri)
+* [`compose_etherpad`](#compose_etherpad)
 
 ##### <a name="jicofo_component_secret"></a>`jicofo_component_secret`
 
@@ -313,4 +316,22 @@ Data type: `Integer`
 
 This value can help to save bandwidth on the server. If set to a positive integer,
 only this amount of videostreams is sent, representing the last N speakers.
+
+##### <a name="compose_jigasi"></a>`compose_jigasi`
+
+Data type: `Boolean`
+
+Compose and start Jigasi container, the SIP (audio only) gateway.
+
+##### <a name="compose_jibri"></a>`compose_jibri`
+
+Data type: `Boolean`
+
+Compose and start Jibri container, the broadcasting infrastructure.
+
+##### <a name="compose_etherpad"></a>`compose_etherpad`
+
+Data type: `Boolean`
+
+Compose and start Etherpad container, a real-time collaborative editor.
 
