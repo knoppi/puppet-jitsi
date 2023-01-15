@@ -116,6 +116,9 @@ class jitsi::containerized_server (
   Boolean $enable_simulcast,
   Boolean $require_display_name,
   Integer $channel_last_n,
+  Boolean $compose_jigasi,
+  Boolean $compose_jibri,
+  Boolean $compose_etherpad,
 ) {
   include docker
   include docker::compose
