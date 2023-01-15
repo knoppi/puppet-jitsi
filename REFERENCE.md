@@ -113,6 +113,7 @@ The following parameters are available in the `jitsi::containerized_server` clas
 * [`disable_simulcast`](#disable_simulcast)
 * [`require_display_name`](#require_display_name)
 * [`channel_last_n`](#channel_last_n)
+* [`custom_variables`](#custom_variables)
 
 ##### <a name="jicofo_component_secret"></a>`jicofo_component_secret`
 
@@ -313,4 +314,11 @@ Data type: `Integer`
 
 This value can help to save bandwidth on the server. If set to a positive integer,
 only this amount of videostreams is sent, representing the last N speakers.
+
+##### <a name="custom_variables"></a>`custom_variables`
+
+Data type: `Array[String]`
+
+Add custom environment variables which are documented at
+[Self-Hosting Guide - Docker](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker/).
 

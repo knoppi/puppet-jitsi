@@ -84,6 +84,15 @@
 # @param channel_last_n
 #   This value can help to save bandwidth on the server. If set to a positive integer,
 #   only this amount of videostreams is sent, representing the last N speakers.
+# @param custom_variables
+#   Add custom environment variables which are documented at
+#   https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker/
+# @param compose_jigasi
+#   Compose and start Jigasi container, the SIP (audio only) gateway.
+# @param compose_jibri
+#   Compose and start Jibri container, the broadcasting infrastructure.
+# @param compose_etherpad
+#   Compose and start Etherpad container, a real-time collaborative editor.
 class jitsi::containerized_server (
   Integer $http_port,
   Integer $https_port,
@@ -116,6 +125,7 @@ class jitsi::containerized_server (
   Boolean $enable_simulcast,
   Boolean $require_display_name,
   Integer $channel_last_n,
+  Optional[Array[String]] $custom_variables,
 ) {
   include docker
   include docker::compose
@@ -140,6 +150,7 @@ class jitsi::containerized_server (
   -> file { '/srv/jitsi/.env':
     ensure  => file,
     content => template('jitsi/env.erb'),
+    notify  => Service['jitsi'],
   }
 
   systemd::unit_file { 'jitsi.service':
