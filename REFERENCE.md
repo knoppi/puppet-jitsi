@@ -335,7 +335,7 @@ Compose and start Jibri container, the broadcasting infrastructure.
 Data type: `Boolean`
 
 Compose and start Etherpad container, a real-time collaborative editor.
-=======
+
 ##### <a name="custom_variables"></a>`custom_variables`
 
 Data type: `Hash[String, Variant[Integer, String, Boolean]]`
