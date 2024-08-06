@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.0.0
+
+- use docker compose v2 [PR #5](https://github.com/knoppi/puppet-jitsi/pull/5) - requires puppetlabs-docker >= 10.0.0
+- use extlib for password creation - pass no more secrets or passwords to the class
+
 ## 1.8.0
 
 * new server parameter:
