@@ -8,24 +8,6 @@
 # @example
 #   include jitsi::containerized_server
 #
-# @param jicofo_component_secret
-#   (required) XMPP component password for Jicofo;
-#   set it to random string as output by `openssl rand -hex 16`
-# @param jicofo_auth_password
-#   (required) XMPP password for Jicofo client connections;
-#   set it to random string as output by `openssl rand -hex 16`
-# @param jvb_auth_password
-#   (required) XMPP password for JVB client connections;
-#   set it to random string as output by `openssl rand -hex 16`
-# @param jigasi_xmpp_password
-#   (required) XMPP password for Jigasi MUC client connections;
-#   set it to random string as output by `openssl rand -hex 16`
-# @param jibri_recorder_password
-#   (required) XMPP recorder password for Jibri client connections;
-#   set it to random string as output by `openssl rand -hex 16`
-# @param jibri_xmpp_password
-#   (required) XMPP password for Jibri client connections;
-#   set it to random string as output by `openssl rand -hex 16`
 # @param http_port
 #   Set the port on which you can reach the web frontend via HTTP.
 #   Defaults to 30799.
@@ -107,12 +89,6 @@ class jitsi::containerized_server (
   Boolean $disable_auto_gain_control,
   Boolean $disable_high_pass_filter,
   Boolean $enable_breakout_rooms,
-  String $jicofo_component_secret,
-  String $jicofo_auth_password,
-  String $jvb_auth_password,
-  String $jigasi_xmpp_password,
-  String $jibri_recorder_password,
-  String $jibri_xmpp_password,
   String $jwt_app_id,
   String $jwt_app_secret,
   Integer $allow_guests,
@@ -132,6 +108,15 @@ class jitsi::containerized_server (
 ) {
   include docker
   include docker::compose
+
+  $slug = "${module_name}-jitsi"
+
+  $jicofo_component_secret = extlib::cache_data($slug, 'jicofo_component_secret', extlib::random_password(48))
+  $jicofo_auth_password    = extlib::cache_data($slug, 'jicofo_auth_password', extlib::random_password(48))
+  $jvb_auth_password       = extlib::cache_data($slug, 'jvb_auth_password', extlib::random_password(48))
+  $jigasi_xmpp_password    = extlib::cache_data($slug, 'jigasi_xmpp_password', extlib::random_password(48))
+  $jibri_recorder_password = extlib::cache_data($slug, 'jibri_recorder_password', extlib::random_password(48))
+  $jibri_xmpp_password     = extlib::cache_data($slug, 'jibri_xmpp_password', extlib::random_password(48))
 
   # Determine effective value of variables
   if ($jwt_app_id != '' and $jwt_app_secret != '') {
