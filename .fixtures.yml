@@ -11,3 +11,4 @@ fixtures:
      yumrepo_core: "puppetlabs/yumrepo_core"
      systemd: "puppet/systemd"
      inifile: "puppetlabs/inifile"
+     extlib: "puppet/extlib"
