@@ -34,32 +34,18 @@ class { 'jitsi::client':
 
 ### Containerized Server
 
-To install the containerized version of the Jitsi server part it is required to define at least the XMPP secrets.
+To install the containerized version of the Jitsi server part no more input parameters are required.
+Secrets are determined automatically.
+
 ```
-class { 'jitsi::containerized_server':
-  jicofo_component_secret => 84f617c4eacf104e70192fd76b970cc2,
-  jicofo_auth_password    => 111139410e4b893aaab88d7bc405f760,
-  jvb_auth_password       => cf766b3e73526a86963bc5083de2f880,
-  jigasi_xmpp_password    => 7b115af382049d6b57e094d5fff0961a,
-  jibri_recorder_password => 58502b58498042df781f49882551848e,
-  jibri_xmpp_password     => a402dd279a6f7bb21109532bb98e8863,
-}
+class { 'jitsi::containerized_server': }
 ```
 
 You can set all parameters using hiera:
 ```
 classes:
   - jitsi::containerized_server
-
-jitsi::containerized_server::jicofo_component_secret: 84f617c4eacf104e70192fd76b970cc2
-jitsi::containerized_server::jicofo_auth_password: 111139410e4b893aaab88d7bc405f760
-jitsi::containerized_server::jvb_auth_password: cf766b3e73526a86963bc5083de2f880
-jitsi::containerized_server::jigasi_xmpp_password: 7b115af382049d6b57e094d5fff0961a
-jitsi::containerized_server::jibri_recorder_password: 58502b58498042df781f49882551848e
-jitsi::containerized_server::jibri_xmpp_password: a402dd279a6f7bb21109532bb98e8863
 ```
-To find suitable values you can determine them with any means, for instance `openssl rand -hex 16` as the creators of the jitsi-docker-implementation recommend.
-
 There are several files governing the behaviour of your jitsi server.
 Most of the settings are passed to the containers as environment variable using the file `.env`
 Settings concerning the web frontend are changed in `${CONFIG_DIR}/web/config.js`.
@@ -85,7 +71,7 @@ jitsi::containerized_server::https_port: 30033
 jitsi::containerized_server::public_url: "https://your.jitsi.domain
 ```
 
-Not that so far, no testing of the Let's Encrypt Integration have been done.
+Note that so far, no testing of the Let's Encrypt Integration have been done.
 
 #### Changing web frontend
 
