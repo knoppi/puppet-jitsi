@@ -6,12 +6,16 @@
 
 ### Classes
 
-* [`jitsi::client`](#jitsiclient): Install the Jitsi client
-* [`jitsi::containerized_server`](#jitsicontainerized_server): Install Jitsi as a containerized service
+* [`jitsi::client`](#jitsi--client): Install the Jitsi client
+* [`jitsi::containerized_server`](#jitsi--containerized_server): Install Jitsi as a containerized service
+
+### Defined types
+
+* [`jitsi::nginx`](#jitsi--nginx): A short summary of the purpose of this defined type.
 
 ## Classes
 
-### <a name="jitsiclient"></a>`jitsi::client`
+### <a name="jitsi--client"></a>`jitsi::client`
 
 On Linux hosts this class installs the specified version of the standalone
 electron client for jitsi as an AppImage package.
@@ -28,11 +32,11 @@ include jitsi::client
 
 The following parameters are available in the `jitsi::client` class:
 
-* [`version`](#version)
-* [`checksum`](#checksum)
-* [`checksum_type`](#checksum_type)
+* [`version`](#-jitsi--client--version)
+* [`checksum`](#-jitsi--client--checksum)
+* [`checksum_type`](#-jitsi--client--checksum_type)
 
-##### <a name="version"></a>`version`
+##### <a name="-jitsi--client--version"></a>`version`
 
 Data type: `String`
 
@@ -44,7 +48,7 @@ corresponding values for `checksum` and `checksum_type`.
 This is used to ensure you actually downloaded the file
 you want to have.
 
-##### <a name="checksum"></a>`checksum`
+##### <a name="-jitsi--client--checksum"></a>`checksum`
 
 Data type: `String`
 
@@ -56,14 +60,14 @@ convert it:
 echo $value_from_yaml | base64 -d | xxd -p
 ```
 
-##### <a name="checksum_type"></a>`checksum_type`
+##### <a name="-jitsi--client--checksum_type"></a>`checksum_type`
 
 Data type: `String`
 
 Which hashing algorithm is used to calculate the checksum of
 the AppImage. By default this is sha512.
 
-### <a name="jitsicontainerized_server"></a>`jitsi::containerized_server`
+### <a name="jitsi--containerized_server"></a>`jitsi::containerized_server`
 
 This class downloads definitions from https://github.com/jitsi/docker-jitsi-meet
 and performs basic settings to produce a simple working setup of jitsi.
@@ -82,85 +86,37 @@ include jitsi::containerized_server
 
 The following parameters are available in the `jitsi::containerized_server` class:
 
-* [`jicofo_component_secret`](#jicofo_component_secret)
-* [`jicofo_auth_password`](#jicofo_auth_password)
-* [`jvb_auth_password`](#jvb_auth_password)
-* [`jigasi_xmpp_password`](#jigasi_xmpp_password)
-* [`jibri_recorder_password`](#jibri_recorder_password)
-* [`jibri_xmpp_password`](#jibri_xmpp_password)
-* [`http_port`](#http_port)
-* [`https_port`](#https_port)
-* [`timezone`](#timezone)
-* [`public_url`](#public_url)
-* [`domain`](#domain)
-* [`version`](#version)
-* [`jibri_domain`](#jibri_domain)
-* [`enable_breakout_rooms`](#enable_breakout_rooms)
-* [`disable_all_audio_processing`](#disable_all_audio_processing)
-* [`disable_echo_cancellation`](#disable_echo_cancellation)
-* [`disable_noise_supression`](#disable_noise_supression)
-* [`disable_auto_gain_control`](#disable_auto_gain_control)
-* [`disable_high_pass_filter`](#disable_high_pass_filter)
-* [`jwt_app_id`](#jwt_app_id)
-* [`jwt_app_secret`](#jwt_app_secret)
-* [`allow_guests`](#allow_guests)
-* [`disable_third_party_requests`](#disable_third_party_requests)
-* [`noisy_mic_detection`](#noisy_mic_detection)
-* [`video_resolution`](#video_resolution)
-* [`start_muted`](#start_muted)
-* [`start_without_video`](#start_without_video)
-* [`enable_prejoin_page`](#enable_prejoin_page)
-* [`disable_simulcast`](#disable_simulcast)
-* [`require_display_name`](#require_display_name)
-* [`channel_last_n`](#channel_last_n)
-* [`custom_variables`](#custom_variables)
-* [`compose_jigasi`](#compose_jigasi)
-* [`compose_jibri`](#compose_jibri)
-* [`compose_etherpad`](#compose_etherpad)
+* [`http_port`](#-jitsi--containerized_server--http_port)
+* [`https_port`](#-jitsi--containerized_server--https_port)
+* [`timezone`](#-jitsi--containerized_server--timezone)
+* [`public_url`](#-jitsi--containerized_server--public_url)
+* [`domain`](#-jitsi--containerized_server--domain)
+* [`version`](#-jitsi--containerized_server--version)
+* [`jibri_domain`](#-jitsi--containerized_server--jibri_domain)
+* [`enable_breakout_rooms`](#-jitsi--containerized_server--enable_breakout_rooms)
+* [`disable_all_audio_processing`](#-jitsi--containerized_server--disable_all_audio_processing)
+* [`disable_echo_cancellation`](#-jitsi--containerized_server--disable_echo_cancellation)
+* [`disable_noise_supression`](#-jitsi--containerized_server--disable_noise_supression)
+* [`disable_auto_gain_control`](#-jitsi--containerized_server--disable_auto_gain_control)
+* [`disable_high_pass_filter`](#-jitsi--containerized_server--disable_high_pass_filter)
+* [`jwt_app_id`](#-jitsi--containerized_server--jwt_app_id)
+* [`jwt_app_secret`](#-jitsi--containerized_server--jwt_app_secret)
+* [`allow_guests`](#-jitsi--containerized_server--allow_guests)
+* [`disable_third_party_requests`](#-jitsi--containerized_server--disable_third_party_requests)
+* [`noisy_mic_detection`](#-jitsi--containerized_server--noisy_mic_detection)
+* [`video_resolution`](#-jitsi--containerized_server--video_resolution)
+* [`start_muted`](#-jitsi--containerized_server--start_muted)
+* [`start_without_video`](#-jitsi--containerized_server--start_without_video)
+* [`enable_prejoin_page`](#-jitsi--containerized_server--enable_prejoin_page)
+* [`enable_simulcast`](#-jitsi--containerized_server--enable_simulcast)
+* [`require_display_name`](#-jitsi--containerized_server--require_display_name)
+* [`channel_last_n`](#-jitsi--containerized_server--channel_last_n)
+* [`custom_variables`](#-jitsi--containerized_server--custom_variables)
+* [`compose_jigasi`](#-jitsi--containerized_server--compose_jigasi)
+* [`compose_jibri`](#-jitsi--containerized_server--compose_jibri)
+* [`compose_etherpad`](#-jitsi--containerized_server--compose_etherpad)
 
-##### <a name="jicofo_component_secret"></a>`jicofo_component_secret`
-
-Data type: `String`
-
-(required) XMPP component password for Jicofo;
-set it to random string as output by `openssl rand -hex 16`
-
-##### <a name="jicofo_auth_password"></a>`jicofo_auth_password`
-
-Data type: `String`
-
-(required) XMPP password for Jicofo client connections;
-set it to random string as output by `openssl rand -hex 16`
-
-##### <a name="jvb_auth_password"></a>`jvb_auth_password`
-
-Data type: `String`
-
-(required) XMPP password for JVB client connections;
-set it to random string as output by `openssl rand -hex 16`
-
-##### <a name="jigasi_xmpp_password"></a>`jigasi_xmpp_password`
-
-Data type: `String`
-
-(required) XMPP password for Jigasi MUC client connections;
-set it to random string as output by `openssl rand -hex 16`
-
-##### <a name="jibri_recorder_password"></a>`jibri_recorder_password`
-
-Data type: `String`
-
-(required) XMPP recorder password for Jibri client connections;
-set it to random string as output by `openssl rand -hex 16`
-
-##### <a name="jibri_xmpp_password"></a>`jibri_xmpp_password`
-
-Data type: `String`
-
-(required) XMPP password for Jibri client connections;
-set it to random string as output by `openssl rand -hex 16`
-
-##### <a name="http_port"></a>`http_port`
+##### <a name="-jitsi--containerized_server--http_port"></a>`http_port`
 
 Data type: `Integer`
 
@@ -168,177 +124,227 @@ Set the port on which you can reach the web frontend via HTTP.
 Defaults to 30799.
 This is required in particular if you run Jitsi behin a reverse proxy.
 
-##### <a name="https_port"></a>`https_port`
+##### <a name="-jitsi--containerized_server--https_port"></a>`https_port`
 
 Data type: `Integer`
 
 Set the port on which you can reach the web frontend via HTTPS.
 Defaults to 30800.
 
-##### <a name="timezone"></a>`timezone`
+##### <a name="-jitsi--containerized_server--timezone"></a>`timezone`
 
 Data type: `String`
 
 Set the timezone, your jitsi instance is running in.
 Defaults to Europe/Amsterdam.
 
-##### <a name="public_url"></a>`public_url`
+##### <a name="-jitsi--containerized_server--public_url"></a>`public_url`
 
 Data type: `String`
 
 Set the URL where your users can reach the web frontend.
 
-##### <a name="domain"></a>`domain`
+##### <a name="-jitsi--containerized_server--domain"></a>`domain`
 
 Data type: `String`
 
 FQDN of your jitsi instance.
 
-##### <a name="version"></a>`version`
+##### <a name="-jitsi--containerized_server--version"></a>`version`
 
 Data type: `String`
 
 version of the container images used
 
-##### <a name="jibri_domain"></a>`jibri_domain`
+##### <a name="-jitsi--containerized_server--jibri_domain"></a>`jibri_domain`
 
 Data type: `String`
 
 If using jibri for recording or streaming, it enters the meeting as an additional
 user. If it has the domain given in this parameter it will actually be hidden.
 
-##### <a name="enable_breakout_rooms"></a>`enable_breakout_rooms`
+##### <a name="-jitsi--containerized_server--enable_breakout_rooms"></a>`enable_breakout_rooms`
 
 Data type: `Boolean`
 
 Enables breakout rooms
 
-##### <a name="disable_all_audio_processing"></a>`disable_all_audio_processing`
+##### <a name="-jitsi--containerized_server--disable_all_audio_processing"></a>`disable_all_audio_processing`
 
 Data type: `Boolean`
 
 Set to True if you want to disable all audio processing.
 Overrides all of the subsequent parameters.
 
-##### <a name="disable_echo_cancellation"></a>`disable_echo_cancellation`
+##### <a name="-jitsi--containerized_server--disable_echo_cancellation"></a>`disable_echo_cancellation`
 
 Data type: `Boolean`
 
 Set to True if you want to disable echo cancellation.
 
-##### <a name="disable_noise_supression"></a>`disable_noise_supression`
+##### <a name="-jitsi--containerized_server--disable_noise_supression"></a>`disable_noise_supression`
 
 Data type: `Boolean`
 
 Set to True if you want to disable noise suppression.
 
-##### <a name="disable_auto_gain_control"></a>`disable_auto_gain_control`
+##### <a name="-jitsi--containerized_server--disable_auto_gain_control"></a>`disable_auto_gain_control`
 
 Data type: `Boolean`
 
 Set to True if you want to disable auto gain control.
 
-##### <a name="disable_high_pass_filter"></a>`disable_high_pass_filter`
+##### <a name="-jitsi--containerized_server--disable_high_pass_filter"></a>`disable_high_pass_filter`
 
 Data type: `Boolean`
 
 Set to True if you want to disable high pass filtering.
 
-##### <a name="jwt_app_id"></a>`jwt_app_id`
+##### <a name="-jitsi--containerized_server--jwt_app_id"></a>`jwt_app_id`
 
 Data type: `String`
 
 Define an id for embedding into jwt based authentication
 
-##### <a name="jwt_app_secret"></a>`jwt_app_secret`
+##### <a name="-jitsi--containerized_server--jwt_app_secret"></a>`jwt_app_secret`
 
 Data type: `String`
 
 Secret for use with JWT authentication
 
-##### <a name="allow_guests"></a>`allow_guests`
+##### <a name="-jitsi--containerized_server--allow_guests"></a>`allow_guests`
 
 Data type: `Integer`
 
 If guests access is allowed
 
-##### <a name="disable_third_party_requests"></a>`disable_third_party_requests`
+##### <a name="-jitsi--containerized_server--disable_third_party_requests"></a>`disable_third_party_requests`
 
 Data type: `Boolean`
 
 when set to true, no third parties like gravatar will be called (default)
 
-##### <a name="noisy_mic_detection"></a>`noisy_mic_detection`
+##### <a name="-jitsi--containerized_server--noisy_mic_detection"></a>`noisy_mic_detection`
 
 Data type: `Boolean`
 
 set to false if you want to disable the detection of noisy mics
 
-##### <a name="video_resolution"></a>`video_resolution`
+##### <a name="-jitsi--containerized_server--video_resolution"></a>`video_resolution`
 
 Data type: `Integer`
 
 set the preferred video resolution
 
-##### <a name="start_muted"></a>`start_muted`
+##### <a name="-jitsi--containerized_server--start_muted"></a>`start_muted`
 
 Data type: `Boolean`
 
 use this to define if a user shall start muted (true) or with audio enabled (false)
 
-##### <a name="start_without_video"></a>`start_without_video`
+##### <a name="-jitsi--containerized_server--start_without_video"></a>`start_without_video`
 
 Data type: `Boolean`
 
 use this to define if a user shall start without video activatedf (true)
 
-##### <a name="enable_prejoin_page"></a>`enable_prejoin_page`
+##### <a name="-jitsi--containerized_server--enable_prejoin_page"></a>`enable_prejoin_page`
 
 Data type: `Boolean`
 
 the prejoin page is shown to users right before joining, asking for a name and the audio/video settings.
 Set this value to true if you want such a page
 
-##### <a name="disable_simulcast"></a>`disable_simulcast`
+##### <a name="-jitsi--containerized_server--enable_simulcast"></a>`enable_simulcast`
 
 Data type: `Boolean`
 
-Unsure about the actual effects. In my case disabling simulcast allowed me to use screensharing.
+Unsure about the actual effects.
 
-##### <a name="require_display_name"></a>`require_display_name`
+##### <a name="-jitsi--containerized_server--require_display_name"></a>`require_display_name`
 
 Data type: `Boolean`
 
 Set to true if you require your users to select a name
 
-##### <a name="channel_last_n"></a>`channel_last_n`
+##### <a name="-jitsi--containerized_server--channel_last_n"></a>`channel_last_n`
 
 Data type: `Integer`
 
 This value can help to save bandwidth on the server. If set to a positive integer,
 only this amount of videostreams is sent, representing the last N speakers.
 
-##### <a name="compose_jigasi"></a>`compose_jigasi`
+##### <a name="-jitsi--containerized_server--custom_variables"></a>`custom_variables`
+
+Data type: `Optional[Hash[String, Variant[Integer, String, Boolean]]]`
+
+Add custom environment variables which are documented at
+https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker/
+
+##### <a name="-jitsi--containerized_server--compose_jigasi"></a>`compose_jigasi`
 
 Data type: `Boolean`
 
 Compose and start Jigasi container, the SIP (audio only) gateway.
 
-##### <a name="compose_jibri"></a>`compose_jibri`
+##### <a name="-jitsi--containerized_server--compose_jibri"></a>`compose_jibri`
 
 Data type: `Boolean`
 
 Compose and start Jibri container, the broadcasting infrastructure.
 
-##### <a name="compose_etherpad"></a>`compose_etherpad`
+##### <a name="-jitsi--containerized_server--compose_etherpad"></a>`compose_etherpad`
 
 Data type: `Boolean`
 
 Compose and start Etherpad container, a real-time collaborative editor.
 
-##### <a name="custom_variables"></a>`custom_variables`
+## Defined types
 
-Data type: `Hash[String, Variant[Integer, String, Boolean]]`
+### <a name="jitsi--nginx"></a>`jitsi::nginx`
 
-Add custom environment variables which are documented at
-[Self-Hosting Guide - Docker](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker/).
+A description of what this defined type does
+
+#### Examples
+
+##### 
+
+```puppet
+jitsi::nginx { 'namevar': }
+```
+
+#### Parameters
+
+The following parameters are available in the `jitsi::nginx` defined type:
+
+* [`ensure`](#-jitsi--nginx--ensure)
+* [`ssl_cert`](#-jitsi--nginx--ssl_cert)
+* [`ssl_key`](#-jitsi--nginx--ssl_key)
+* [`ipv6`](#-jitsi--nginx--ipv6)
+
+##### <a name="-jitsi--nginx--ensure"></a>`ensure`
+
+Data type: `Enum[present, absent]`
+
+
+
+##### <a name="-jitsi--nginx--ssl_cert"></a>`ssl_cert`
+
+Data type: `String`
+
+
+
+##### <a name="-jitsi--nginx--ssl_key"></a>`ssl_key`
+
+Data type: `String`
+
+
+
+##### <a name="-jitsi--nginx--ipv6"></a>`ipv6`
+
+Data type: `Boolean`
+
+
+
+Default value: `true`
+
