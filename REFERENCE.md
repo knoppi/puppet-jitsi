@@ -9,10 +9,6 @@
 * [`jitsi::client`](#jitsi--client): Install the Jitsi client
 * [`jitsi::containerized_server`](#jitsi--containerized_server): Install Jitsi as a containerized service
 
-### Defined types
-
-* [`jitsi::nginx`](#jitsi--nginx): A short summary of the purpose of this defined type.
-
 ## Classes
 
 ### <a name="jitsi--client"></a>`jitsi::client`
@@ -298,53 +294,4 @@ Compose and start Jibri container, the broadcasting infrastructure.
 Data type: `Boolean`
 
 Compose and start Etherpad container, a real-time collaborative editor.
-
-## Defined types
-
-### <a name="jitsi--nginx"></a>`jitsi::nginx`
-
-A description of what this defined type does
-
-#### Examples
-
-##### 
-
-```puppet
-jitsi::nginx { 'namevar': }
-```
-
-#### Parameters
-
-The following parameters are available in the `jitsi::nginx` defined type:
-
-* [`ensure`](#-jitsi--nginx--ensure)
-* [`ssl_cert`](#-jitsi--nginx--ssl_cert)
-* [`ssl_key`](#-jitsi--nginx--ssl_key)
-* [`ipv6`](#-jitsi--nginx--ipv6)
-
-##### <a name="-jitsi--nginx--ensure"></a>`ensure`
-
-Data type: `Enum[present, absent]`
-
-
-
-##### <a name="-jitsi--nginx--ssl_cert"></a>`ssl_cert`
-
-Data type: `String`
-
-
-
-##### <a name="-jitsi--nginx--ssl_key"></a>`ssl_key`
-
-Data type: `String`
-
-
-
-##### <a name="-jitsi--nginx--ipv6"></a>`ipv6`
-
-Data type: `Boolean`
-
-
-
-Default value: `true`
 
